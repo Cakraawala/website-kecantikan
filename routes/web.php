@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\CategoryProduct;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,11 +14,21 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/dashboard', function(){
+    return view('dashboard.index',
+    ['users' => User::all()]
+);
+});
 Route::get('/', function () {
-    return view('index');
+    return view('index',
+    ['categories' => CategoryProduct::all()]);
 });
 
 Route::get('/masuk',function(){
     return view('login.login');
 });
+
+Route::get('/cart', function(){
+    return view('cart');
+});
+

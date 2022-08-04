@@ -3,6 +3,50 @@
             <div class="cont1atas"></div>
             <ul class="navbar-nav flex-row flex-wrap">
                 <li class="nav-item col-4 col-md-auto">
+                    <a href="#" class="disabled nav-link fa fa-facebook"></a>
+                </li>
+                <li class="nav-item col-4 mt-0 col-md-auto">
+                    <a href="/" class=" disabled nav-link fa fa-twitter"></a>
+                </li>
+                <li class="nav-item col-4 mt-0 mb-0 ps-1 col-md-auto">
+                <a href="/" class="nav-link px-0 fa fa-instagram disabled"> </a>
+                </li>
+                <li class="nav-item col-4 mt-0 mb-0 ms-2 ps-1 col-md-auto">
+                    <a href="/" class="nav-link px-0 fa disabled fa-envelope"> </a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav ms-auto flex-row flex-wrap">
+                <li class="nav-item col-4 col-md-auto">
+                    <a href="/" class="nav-link disabled fa fa-bell"> Notifikasi</a>
+                </li>
+                <li class="nav-item col-4 mt-0 col-md-auto">
+                    <a href="/" class="nav-link fa fa-font-awesome disabled"> Bantuan </a>
+                </li>
+            </ul>
+            </div>
+    </nav>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark
+        -wrap flex-md-nowrap ">
+            <div class="container">
+                <a class="navbar-brand disabled" style="font-size: 30px;font-family:Copperplate;" href="#">Cakra</a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse float-end" id="navbarNav">
+                    <ul class="navbar-nav flex-row flex-wrap bd-navbar-nav pt-2
+                    py-md-0">
+                    </ul></div></div></nav>
+
+
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark -wrap flex-md-nowrap ">
+        <div class="container">
+            <div class="cont1atas"></div>
+            <ul class="navbar-nav flex-row flex-wrap">
+                <li class="nav-item col-4 col-md-auto">
                     <a href="/" class="nav-link fa fa-facebook"></a>
                 </li>
                 <li class="nav-item col-4 mt-0 col-md-auto">
@@ -27,7 +71,7 @@
             </div>
     </nav>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark
+    <nav class="navbar fixed-top mt-5 navbar-expand-lg navbar-dark bg-dark
         -wrap flex-md-nowrap ">
             <div class="container">
                 <a class="navbar-brand" style="font-size: 30px;font-family:Copperplate;" href="#">Cakra</a>
@@ -72,7 +116,7 @@
                         </li>
                         @else
                             <li class="nav-item col-4 col-md-auto">
-                                 <a href=""> <i class="fa fa-shopping-cart nav-link px-2 me-2" style="font-size:24px;color:white"></i> </a>
+                                 <a href="/cart"> <i class="fa fa-shopping-cart nav-link px-2 me-2" style="font-size:24px;color:white"></i> </a>
                             </li>
                                 <li class="nav-item col-6 col-md-auto">
                                     <a href="/register" class="nav-link px-2" style="font-weight: 500;font-family:Verdana, Geneva, Tahoma, sans-serif">
