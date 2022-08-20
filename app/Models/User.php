@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -17,22 +17,19 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    // protected $fillable = [
+    //     'name',
+    //     'email',
+    //     'password',
+    // ];
     protected $guarded = ['id'];
     protected $table = 'users';
-    public function province(){
-        return $this->belongsTo(Province::class, 'province_id');
-    }
-    public function regency(){
-        return $this->belongsTo(Regency::class, 'regency_id' ,'id');
-    }
-    public function district(){
-        return $this->belongsTo(District::class, 'district_id','id');
-    }
-    public function historycarts(){
-        return $this->hasMany(Cart::class, 'users_id' ,'id');
+
+    public function cart(){
+        return $this->hasMany(Cart::class );
     }
     public function checkouts(){
-        return $this->hasMany(Checkout::class, 'users_id', 'id');
+        return $this->hasMany(Checkout::class);
     }
     /**
      * The attributes that should be hidden for serialization.
