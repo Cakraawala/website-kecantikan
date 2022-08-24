@@ -10,10 +10,10 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class LoginController extends Controller
 {
-
     public function index(){
+        Alert::error('title', 'body');
         return view('login.login');
-        Alert::info('title', 'body');
+        Alert::error('title', 'body');
     }
 
     public function authenticate(Request $request){

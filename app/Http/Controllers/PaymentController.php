@@ -18,6 +18,13 @@ class PaymentController extends Controller
         return view('d.payment.index', ['payment' => $payment->get(), 'title' => 'Payment']);
     }
 
+
+    public function fee(Request $request){
+        $Payment = Payment::where('id', $request->id)->first();
+        return json_encode($Payment);
+    }
+
+
     public function create(Request $request)
     {
         $payment = Payment::all();

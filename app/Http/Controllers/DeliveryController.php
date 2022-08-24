@@ -16,6 +16,11 @@ class DeliveryController extends Controller
         return view('d.delivery.index', ['delivery' => $delivery, 'title' => 'Delivery']);
     }
 
+    public function ongkir(Request $request){
+        $delivery = Delivery::where('id', $request->id)->first();
+        return json_encode($delivery);
+    }
+
     public function create(Request $request)
     {
         return view('d.delivery.create', ['delivery' => Delivery::all(),  'title' => 'Buat data Delivery']);

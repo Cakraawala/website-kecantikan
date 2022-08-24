@@ -16,14 +16,22 @@ return new class extends Migration
         Schema::create('carts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('users_id')->unsigned();
+            $table->bigInteger('payments_id')->unsigned()->nullable();
+            $table->bigInteger('deliveries_id')->unsigned()->nullable();
             $table->string('no_resi')->nullable();
-            $table->bigInteger('subtotal')->default(0);
             $table->foreign('users_id')->references('id')
-                ->on('users')->onDelete('cascade');
-            $table->string('status');
-            $table->string('status_pembayaran')->nullable();
+            ->on('users')->onDelete('cascade');
+            $table->foreign('payments_id')->references('id')
+            ->on('payments')->onDelete('cascade');
+            $table->foreign('deliveries_id')->references('id')
+            ->on('deliveries')->onDelete('cascade');
             $table->date('tgl')->nullable();
-            $table->bigInteger('total')->default(0);
+            $table->string('status_pembayaran')->nullable();
+            $table->string('status');
+            $table->bigInteger('total_delivery')->default(0);
+            $table->bigInteger('total_fee')->default(0);
+            $table->bigInteger('total_products')->default(0);
+            $table->bigInteger('subtotal')->default(0);
             $table->timestamps();
         });
     }

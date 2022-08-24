@@ -11,7 +11,7 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h4><i class="fa fa-user">&nbsp;My Profile</i></h4>
+                    <h4><i class="fa fa-user"> </i>&nbsp;My Profile</h4>
                     <a href="/my-account/edit">Edit profile</a>
                 </div>
                 <div class="card-body">
@@ -31,6 +31,11 @@
                                 <td> Email </td>
                                 <td> : </td>
                                 <td> {{ $user->email ?? '-'  }} </td>
+                            </tr>
+                            <tr>
+                                <td> Jenis Kelamin </td>
+                                <td> : </td>
+                                <td> {{ $user->jk ?? '-'  }} </td>
                             </tr>
                             <tr>
                                 <td> No Telp </td>

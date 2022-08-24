@@ -33,9 +33,9 @@
                             @foreach ($checkout_detail as $cd)
                             <tr>
                                 <td>{{ $no++}}</td>
-                                <td>{{$cd->products->nm_products}}</td>
+                                <td><a href="/products/{{ $cd->products->slug }}" class="nav-link" style="color:black">{{$cd->products->nm_products}}</a></td>
                                 <td style="text-align: center">
-                                    <input type="number" value="{{ number_format($cd->quantity) }}" class="form-control quantity update-cart" />
+                                    <input type="number" value="{{ number_format($cd->quantity) }}" class="form-control quantity update-cart" name="update-cart">
                                 </td>
                                 {{-- <td style="text-align: center">{{$cd->quantity}}</td> --}}
                                 <td> Rp.{{ number_format($cd->products->price)}}</td>
@@ -56,8 +56,10 @@
                                 <td colspan="6" class="text-end"><h3><strong>Total Rp.{{ number_format($checkout->subtotal ?? 0) }}</strong></h3></td>
                             </tr>
                             <tr>
-                                <td colspan="6" class="text-end">
+                                <td colspan="2" class="text-start">
                                     <a href="/products" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a>
+                                </td>
+                                <td colspan="5" class="text-end">
                                     <a href="/checkout" class="btn btn-success">Checkout</button>
                                     </td>
                                 </tr>
@@ -70,77 +72,6 @@
 
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-{{-- <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
-    <!-- Main content -->
-    <section class="content" style="margin-bottom: 300px;">
-        <div class="album py-5 bg-light"  style="margin-top: 130px;">
-            <div class="container">
-
-<table id="cart" class="table table-hover table-condensed mb-5">
-    <thead>
-        <tr>
-            <th style="width:50%">Product</th>
-            <th style="width:10%">Price</th>
-            <th style="width:8%">Quantity</th>
-            <th style="width:22%" class="text-center">Subtotal</th>
-            <th style="width:10%"></th>
-        </tr>
-    </thead>
-    <tbody>
-        @php $total = 0 @endphp
-        @if(session('cart'))
-            @foreach(session('cart') as $id => $details)
-                @php $total += $details['price'] * $details['quantity'] @endphp
-                <tr data-id="{{ $id }}">
-                    <td data-th="Product">
-                        <div class="row">
-                            <div class="col-sm-3 hidden-xs"><img src="{{ $details['image'] }}" width="100" height="100" class="img-responsive"/></div>
-                            <div class="col-sm-9">
-                                <h4 class="nomargin">{{ $details['nm_products'] }}</h4>
-                            </div>
-                        </div>
-                    </td>
-                    <td data-th="Price">Rp.{{ number_format($details['price']) }}</td>
-                    <td data-th="Quantity">
-                        <input type="number" value="{{ number_format($details['quantity']) }}" class="form-control quantity update-cart" />
-                    </td>
-                    <td data-th="Subtotal" class="text-center">Rp.{{ number_format($details['price'] * $details['quantity']) }}</td>
-                    <td class="actions" data-th="">
-                        <button class="btn btn-danger btn-sm remove-from-cart"><i class="fa fa-trash-o"></i></button>
-                    </td>
-                </tr>
-            @endforeach
-        @endif
-    </tbody>
-    <tfoot>
-        <tr>
-            <td colspan="5" class="text-end"><h3><strong>Total Rp.{{ number_format($total) }}</strong></h3></td>
-        </tr>
-        <tr>
-            <td colspan="5" class="text-end">
-                <a href="/" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a>
-                <a href="/transaksi/checkout" class="btn btn-success">Checkout</button>
-            </td>
-        </tr>
-    </tfoot>
-</table>
-</div>
-</div>
-</section>
-</div> --}}
 @endsection
 
 @section('scripts')
@@ -149,15 +80,13 @@
     $(".update-cart").change(function (e) {
         e.preventDefault();
 
-        var ele = $(this);
-
         $.ajax({
             url: '{{ route('update.cart') }}',
             method: "patch",
             data: {
-                _token: '{{ csrf_token() }}',
-                id: ele.parents("tr").attr("data-id"),
-                quantity: ele.parents("tr").find(".quantity").val()
+                // _token: '{{ csrf_token() }}',
+                id: $("#cart_details_id").val(),
+                quantity: $("#quantity").val(),
             },
             success: function (response) {
                window.location.reload();

@@ -9,7 +9,7 @@
 <div class="containersas" style="margin-top: 100px;margin-bottom:650px">
 <div class="card">
    <div class="card-header">
-        <h4> Edit Profile</h4>
+        <h4> <i class="fa fa-pencil"></i> Edit Profile </h4>
     </div>
     <div class="card-body">
         <form action="/my-account/update" method="post" class="mb-5"
@@ -19,7 +19,7 @@
 
             <div class="mb-3">
 
-                <label for="name" class="form-label">Nama User <span style="font-style: italic;">(required)</span></label>
+            <label for="name" class="form-label"> Nama User <span style="font-style: italic;"></span></label>
 
                 <input type="text" class="form-control  @error('name') is-invalid @enderror"
                   id="name" name ='name' value="{{ old('name', $user->name) }}">
@@ -31,7 +31,7 @@
               </div>
 
               <div class="mb-3">
-                  <label for="username" class="form-label">Username <span style="font-style: italic;">(required)</span></label>
+                  <label for="username" class="form-label">Username <span style="font-style: italic;"></span></label>
                   <input type="text" class="form-control @error('username') is-invalid @enderror" id="username" name="username" value="{{ old('username', $user->username) }}">
                   @error('username')
                   <div class="invalid-feedback">
@@ -76,8 +76,8 @@
                   </label>
                   <select value="{{ old('jk', $user->jk) }}"name="jk" id="jk" class="form-select  @error('jk') is-invalid @enderror">
                       <option value="?" selected>Pilih Jenis Kelamin</option>
-                      <option value="L"> Laki-Laki </option>
-                      <option value="P"> Perempuan </option>
+                      <option value="Pria"> Pria </option>
+                      <option value="Wanita"> Wanita </option>
                   </select>
             @error('jk')
              <div class="invalid-feedback">
@@ -89,7 +89,7 @@
 
               <div class="mb-3">
                 <label for="code_pos" class="form-label"> Code Pos </label>
-                <input type="text" class="form-control  @error('code_pos') is-invalid @enderror" id="code_pos" value="{{ old('code_pos', $user->code_pos) }} " name="code_pos" required" >
+                <input type="text" class="form-control  @error('code_pos') is-invalid @enderror" id="code_pos" value="{{ old('code_pos', $user->code_pos) }} " name="code_pos" >
                  @error('code_pos')
                   <div class="invalid-feedback">
                     {{$message }}
@@ -99,7 +99,7 @@
 
               <div>
                 <label for="address" class="form-label"> Address </label>
-                <textarea class="form-control  @error('address') is-invalid @enderror" id="address" name="address" required>{{ old('address', $user->address) }}</textarea>
+                <textarea class="form-control  @error('address') is-invalid @enderror" id="address" name="address">{{ old('address', $user->address) }}</textarea>
                  @error('address')
                   <div class="invalid-feedback">
                     {{$message }}

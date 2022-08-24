@@ -103,47 +103,10 @@ class DatabaseSeeder extends Seeder
             'nm_products' => 'Barang Pertama',
             'slug' => 'barang-pertama',
             'category_products_id' => 1,
-            'quantity' => 1,
-            'price' => 1,
+            'quantity' => 110,
+            'price' => 123000,
             // 'address' => 'asdasdas',
-            'deskripsi' => 'Deskripsi Produk
-            Hallo selamat datang di toko AQUINA OFFICIAL SHOP
-
-            Disini kami menyediakan berbagai fashion terkini baik wanita maupun pria karena jaket yang kita jual bersifat unisex atau bisa di pakai wanita maupun pria.
-            - Jam Operasional Toko : Senin s.d. Sabtu dari Mulai Pukul 7:00 s.d. 21:00
-            - Jam Pengiriman Barang : Senin s.d. Sabtu pukul 17:00 (order diatas jam 17:00 dikirim keesokan harinya)
-            Keunggulan Belanja di Toko kami :
-            - Gratis Ongkir/Extra
-            - Tersedia Voucher toko lainnya yang tersedia
-            - Mendapatkan Cashback Extra
-            - Proses packing dan pengiriman ke Expedisi lebih cepat karena kita langsung masuk ke gudang pusat ekspedisi
-
-            Jaket coach menjadi salah satu jenis jaket yang sedang naik daun di kalangan anak-anak muda zaman sekarang. Jaket coach mempunyai nama keren windbreaker jacket, dimana windbreaker adalah sejenis mantel tipis yang dirancang untuk menahan angin dingin dan hujan gerimis (semi waterproof).
-
-            Recommended Produk Untuk kalian yang suka berganti2 style ataupun kalian yang mungkin kurang percaya diri dengan gaya yang kalian punya jangan ragu untuk merubah penampilan anda untuk menjadi lebih rapih, modis dan keren abis, dengan harga yang sudah kami tawarkan termurah dari pasaran namun kualitas bukan pasaran karena kami tangan pertama menjadikan harga kami yang di unggulkan
-
-            * Jaket bisa di pakai formal maupun casual (santai abis)
-            * Trendy keluaran terbaru
-            * Bahan luar terbuat dari taslan (adem di pakai tidak gerah)
-            * Bahan dalam terbuat dari bilabong atau hyget (nyaman ketika anda pakai karena halus)
-            * Cocok di pakai di segala kondisi mau dingin ataupun panas
-            * Kancing jaket menggunakan kualitas terbaik tidak mudah rusak
-            * Terdapat 2 kantong di luar jaket di bagian samping kiri dan kanan pada umumnya
-            * Terdapat 1 kantong dalam di dada
-            * Sablon terbuat dari bahan plastisol atau rubber (tidak pecah2 ataupun luntur)
-            * Memiliki jahitan yang kuat tidak mudah robek
-            * Memiliki beberapa variasi warna seperti yang di pajang pada display (Motif Gambar)
-            * Hanya memiliki 2 ukuran L dan XL
-            * Size Chart Jaket L Panjang 69 Lebar 54 dan XL Panjang 71 Lebar 56
-            * Full Tag dan aksesoris mencirikan produk yang kami jual Original
-            * Menerima Reseller dan dropshiper
-            * Packing cepat dan rapih
-            * Harga yang kami jual sangat bersaing (ngapain cari yang lain kalo udah ada yang tepat di depan mata)
-            * Menerima pesanan COD (Cash On Delivery) transaksi aman dan ngga ribet
-            * Pengiriman kita dari Kab.Bandung
-            * Pengemasan 1 hari
-
-            CATATAN : UNTUK KENYAMANAN BERSAMA DAN JUGA UNTUK MENINGKATKAN KUALITAS TOKO DAN PRODUK KAMI, DISINI KAMI HANYA MENERIMA KOMPLENAN YANG MELAKUKAN VIDIO UNBOXING SAJA (VIDIO BUKA PAKET)
+            'deskripsi' => 'Deskripsi Produk KUALITAS TOKO DAN PRODUK KAMI, DISINI KAMI HANYA MENERIMA KOMPLENAN YANG MELAKUKAN VIDIO UNBOXING SAJA (VIDIO BUKA PAKET)
             '
         ]);
 
@@ -152,8 +115,8 @@ class DatabaseSeeder extends Seeder
             'nm_products' => 'Barang kedua',
             'slug' => 'barang-kedua',
             'category_products_id' => 1,
-            'quantity' => 1,
-            'price' => 1,
+            'quantity' => 121,
+            'price' => 150000,
             // 'address' => 'asdasdas',
 
         ]);
@@ -162,8 +125,8 @@ class DatabaseSeeder extends Seeder
             'nm_products' => 'Barang ketiga',
             'slug' => 'barang-ketiga',
             'category_products_id' => 1,
-            'quantity' => 1,
-            'price' => 1,
+            'quantity' => 10,
+            'price' => 100000,
             // 'address' => 'asdasdas',
 
         ]);

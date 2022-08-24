@@ -13,6 +13,7 @@ use App\Models\Payment;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CartDetailController;
 use App\Http\Controllers\MyAccountController;
+use App\Http\Controllers\StatusController;
 use App\Models\Products;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
@@ -73,6 +74,11 @@ Route::post('/dashboard/delivery/{id}/update', [DeliveryController::class, 'upda
 Route::get('/dashboard/delivery/{id}/show',[DeliveryController::class, 'show'])->middleware('admin');
 Route::get('/dashboard/delivery/create', [DeliveryController::class, 'create'])->middleware('admin');
 
+Route::get('/dashboard/c-pending', [StatusController::class, 'dashboardindex'])->middleware('admin');
+Route::get('/dashboard/c-pending/{id}/delete', [StatusController::class, 'delete'])->middleware('admin');
+Route::get('/dashboard/c-pending/{id}/edit', [StatusController::class, 'edit'])->middleware('admin');
+Route::post('/dashboard/c-pending/{id}/update', [StatusController::class, 'update'])->middleware('admin');
+
 
 
 
@@ -110,8 +116,11 @@ Route::delete('remove-from-cart', [CartController::class, 'remove'])->name('remo
 Route::get('/cart',[CartController::class, 'cart'])->name('cart')->middleware('auth');
 Route::post('/cart/{id}/delete',[CartController::class, 'delete'])->middleware('auth');
 
-Route::get('/checkout', [CartController::class, 'checkout'])->middleware('auth');
-Route::get('/confirm-checkout', [CartController::class, 'confirm'])->middleware('auth');
+Route::get('/checkout', [CartController::class, 'checkout'])->middleware('auth')->name('checkout');
+Route::post('/confirm-checkout', [CartController::class, 'confirm'])->middleware('auth');
+Route::get('/ongkir', [DeliveryController::class,'ongkir']);
+Route::get('/fee', [PaymentController::class,'fee']);
+// Route::get('/ongkir/{id}', [DeliveryController::class, 'ongkir'])->middleware('auth');
 // Route::get('/cart', function(){
 //     return view('cart');
 // });
@@ -139,7 +148,7 @@ Route::get('/login', [LoginController::class, 'index'])->name('login')->middlewa
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth');
 
-Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
+Route::get('/register', [RegisterController::class, 'index'])->name('register')->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
 
 

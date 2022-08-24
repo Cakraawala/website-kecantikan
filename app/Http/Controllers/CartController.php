@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Products;
 use App\Models\Cart;
 use App\Models\CartDetail;
+use App\Models\Checkout;
+use App\Models\Delivery;
+use App\Models\Payment;
+use App\Models\User;
 use Carbon\Carbon;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
@@ -47,34 +51,18 @@ class CartController extends Controller
     public function checkout(){
         $checkout = Cart::where('users_id', Auth::user()->id)->where('status', 'cart')->first();
         $title = 'Checkout';
-
+        $user = User::where('id', Auth::user()->id)->first();
+        $delivery = Delivery::all();
+        $payment = Payment::all();
         if(!empty($checkout)){
             $checkout_detail = CartDetail::where('carts_id', $checkout->id)->get();
-            return view('checkout', compact('checkout', 'checkout_detail', 'title'));
+            return view('checkout', compact('checkout', 'checkout_detail', 'title', 'user', 'delivery', 'payment'));
         } else {
-            $checkout_detail = CartDetail::where('carts_id', $checkout->id ?? 0)->get();
-            return view('checkout', compact('checkout', 'checkout_detail', 'title'));
+        Alert::error('Errors', 'Tidak ada data cart!');
+          return back();
         }
     }
 
-    // public function addToCart($id)
-    // {
-    //     // $product = Products::findOrFail($id);
-    //     // $cart = session()->get('cart', []);
-    //     // if(isset($cart[$id])) {
-    //     //     $cart[$id]['quantity']++;
-    //     // } else {
-    //     //     $cart[$id] = [
-    //     //         "nm_products" => $product->nm_products,
-    //     //         "quantity" => 1 ,
-    //     //         "price" => $product->price,
-    //     //         "image" => $product->image
-    //     //     ];
-    //     // }
-
-    //     // session()->put('cart', $cart);
-    //     // return redirect()->back()->with('success', 'Product added to cart successfully!');
-    // }
 
     public function addToCart(Request $request, $id){
        $product = Products::where('id', $id)->first();
@@ -97,10 +85,10 @@ class CartController extends Controller
         $no_invoice = Cart::where('users_id', $checkout->users_id)->count();
          $checkout->tgl = $tgl;
          $checkout->status = 'cart';
-         $checkout->no_resi = Str::random(10). ' ' .str_pad(($no_invoice + 1), '3', '0', STR_PAD_LEFT);
+         $checkout->no_resi = Str::random(5). $checkout->tgl.str_pad(($no_invoice + 1), '3', '0', STR_PAD_LEFT);
          $checkout->subtotal = 0;
          $checkout->status_pembayaran = 0;
-         $checkout->total = 0;
+        //  $checkout->total = 0;
          $checkout->save();
        }
         // simpan ke db detail
@@ -133,38 +121,51 @@ class CartController extends Controller
 
         Alert::success('Success', 'Success Added to Cart');
         return redirect('/');
-        // $cart = session('cart');
-        // $carts_id = Cart::new_cart();
-        // foreach($cart as $ct => $details){
-        //     $products_id= $ct;
-        //     $quantity = $details['quantity'];
-        //     CartDetail::new_detail_cart($products_id, $carts_id, $quantity);
-        // }
 
-        // session()->forget('cart');
-
-        // return redirect('/cart');
     }
 
     public function update(Request $request)
     {
-        // $checkout = Cart::where('users_id', Auth::user()->id)->where('status', 'cart')->first();
-        // $checkout_detail = CartDetail::where('carts_id', $checkout->id)->get();
 
         if($request->id && $request->quantity){
             $cart = Cart::where('users_id', Auth::user()->id)->where('status', 'cart')->first()->get();
             $cart_detail = CartDetail::where('carts_id', $request->id);
-            $cart[$request->id]["quantity"] = $request->quantity;
+            $cart_detail[$request->cart_details_id]["quantity"] = $request->quantity;
             $cart->put('cart', $cart);
             return back()->flash('success', 'Cart updated successfully');
         }
     }
 
     public function confirm(Request $request){
+        // dd($request);
+        $user = User::where('id', Auth::user()->id)->first();
+        if(empty($user->address)){
+            Alert::error('Error', 'Your address was empty!');
+            return redirect('/my-account/edit');
+        }
+        if(empty($user->no_wa)){
+            Alert::error('Error', 'Your No telp was empty!');
+            return redirect('/my-account/edit');
+        }
         $cart = Cart::where('users_id', Auth::user()->id)->where('status', 'cart')->first();
+
+        $checkout = new Checkout();
+        $checkout->users_id = Auth::user()->id;
+        $no_invoice = Cart::where('users_id', $checkout->users_id)->count();
+        $checkout->carts_id = $cart->id;
+        $checkout->payments_id = $request->payments_id;
+        $checkout->deliveries_id = $request->deliveries_id;
+        $checkout->total_products = $cart->subtotal;
+        $checkout->total_delivery = Delivery::where('id', $checkout->deliveries_id)->first()->ongkir;
+        $checkout->total_fee = Payment::where('id', $checkout->payments_id)->first()->fee;
+        $checkout->subtotal = $checkout->total_fee + $checkout->total_products + $checkout->total_delivery;
+        $checkout->no_resi = Str::random(5).str_pad(($no_invoice + 1), '3', '0', STR_PAD_LEFT);
+        $checkout->status = 'pending';
+        $checkout->save();
         $cart_id = $cart->id;
-        $cart->status = 'Pending';
-        $cart->update();
+        // $cart->status = 'Pending';
+        // $cart->payments_id = $request->payments_id;
+        // $cart->update();
 
         $cart_detail = CartDetail::where('carts_id', $cart_id)->get();
         foreach($cart_detail as $cd){
@@ -172,9 +173,11 @@ class CartController extends Controller
             $product->quantity = $product->quantity- $cd->quantity;
             $product->update();
         }
-
+        $cart->delete();
         Alert::success('Success', 'Checkout Success');
+        return redirect('/');
     }
+
 
     /**
      * Write code on Method

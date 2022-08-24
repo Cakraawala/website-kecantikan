@@ -55,8 +55,8 @@
             </label>
             <select name="jk" id="jk" class="form-select">
                 <option value="?" selected>Pilih Jenis Kelamin</option>
-                <option value="L"> Laki-Laki </option>
-                <option value="P"> Perempuan </option>
+                <option value="Pria"> Pria </option>
+                <option value="Wanita"> Wanita </option>
             </select>
           </div>
 
