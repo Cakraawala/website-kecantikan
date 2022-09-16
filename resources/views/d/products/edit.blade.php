@@ -32,20 +32,62 @@
 
           <div class="mb-3">
               <label for="category_products_id" class="form-label">Category Products <span style="font-style: italic;">(required)</span></label>
-              <input type="text" class="form-control @error('category_products_id') is-invalid @enderror" id="category_products_id" name="category_products_id" value="{{ old('category_products_id', $product->category_products_id) }}" disabled>
-              @error('category_products_id')
-              <div class="invalid-feedback">
-                {{$message }}
-                </div>
-              @enderror
-              <select value="{{ old('category_products_id', $product->category_products_id) }}" name="category_products_id" id="category_products_id" class="form-select  @error('category_products_id') is-invalid @enderror">
-                <option selected>Edit Category Product</option>
+
+              <select name="category_products_id" id="category_products_id" class="form-select  @error('category_products_id') is-invalid @enderror">
+                {{-- <option >{{ old('category_products_id', $product->CategoryProduct->nm_category) }}</option> --}}
                 @foreach ($categoryproduct as $cp)
-                <option value="{{ $cp->id }}"> {{ $cp->nm_category }} </option>
+                @if(old('category_products_id', $product->category_products_id) == $cp->id)
+                    <option value="{{ $cp->id }}" selected> {{ $cp->nm_category }} </option>
+                    @else
+                    <option value="{{ $cp->id }}"> {{ $cp->nm_category }} </option>
+                @endif
                 @endforeach
             </select>
           </div>
-        <button type="submit" class="btn btn-primary">Update post!</button>
+
+          <div class="mb-3">
+            <label for="price" class="form-label">Price <span style="font-style: italic">(required)</span></label>
+            <input type="number" class="form-control @error('price') is-invalid @enderror" id="price" name="price" value="{{ old('price', $product->price) }}"
+            @error('category_products_id')
+            <div class="invalid-feedback">
+              {{$message }}
+              </div>
+            @enderror
+          </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="image" class="form-label mb-1">Image Product</i></label>
+            <input type="hidden" name="oldImage" value="{{ $product->image }}">
+            @if ($product->image)
+            <img src="{{ asset('storage/' . $product->image) }}" class="img-preview img-fluid mb-3 col-sm-5 d-block" style="width:200px;height:200px">
+                @else
+                <img class="img-preview img-fluid mb-3 col-sm-5">
+            @endif
+
+            <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image">
+            @error('image')
+            <div class="invalid-feedback">
+                {{$message}}
+            </div>
+        @enderror
+    </div>
+
+
+        <div class="mb-3">
+            <label for="deskripsi" class="form-label">Deskripsi</label>
+            <input type="text" class="form-control" value="{{ old('deskripsi', $product->deskripsi) }}" readonly>
+            <textarea class="form-control @error('deskripsi') is-invalid @enderror"
+              id="deskripsi" name ='deskripsi'> </textarea>
+              @error('deskripsi')
+              <div class="invalid-feedback">
+                  {{$message}}
+              </div>
+          @enderror
+          </div>
+
+
+        <button type="submit" class="btn btn-primary">Update!</button>
       </form>
     </div>
     </main>

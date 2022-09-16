@@ -11,7 +11,7 @@
         <a href="/dashboard/delivery" class="nav-link text-dark""><h2>Delivery</h2></a>
           <form action="/dashboard/delivery" method="get" class="ms-2 d-flex mt-3 mb-3 px-5" role="search">
             @csrf
-            <input class="form-control ms-3 me-2" style="width: 450px" type="search" placeholder="Search... (Delivery name, id Delivery, Fee)" name="search">
+            <input class="form-control ms-3 me-2" style="width: 450px" type="search" placeholder="Search... (Id, Delivery name, Ongkir)" name="search">
             <button class="btn btn-outline-secondary" type="submit"><i class="fa fa-search"></i></button>
         </form>
           <div class="btn-toolbar mb-2 mb-md-0">
@@ -34,7 +34,7 @@
 
       @endif
       <div class="table-responsive">
-          <table class="table table-striped table-sm">
+          <table class="table table-bordered table-striped table-lg" id="myTable">
             <thead>
               <tr>
                 <th scope="col">Id</th>
@@ -53,13 +53,12 @@
                   <td>{{ $d->estimasi }} Hari</td>
 
                   <td>
-
-                      <a href="/dashboard/delivery/{{ $d->id }}/edit" class="badge bg-warning">
-                        <i class="fa-solid fa-den">Edit</i>
-                    </a>
-                    {{-- <a href="/dashboard/categorydroduct//{{ $d->id }}/show" class="badge bg-success">
-                        <sdan data-feather="eye">Show</sdan>
-                      </a> --}}
+                    <form action="/dashboard/delivery/{{ $d->id }}/edit" class="d-inline">
+                        @csrf
+                            <button class="badge bg-warning border-0">
+                                <span>Edit</span>
+                            </button>
+                    </form>
                       <form action="/dashboard/delivery/{{ $d->id }}/delete" class="d-inline">
                         @csrf
                         {{-- @method('delete') --}}
@@ -75,7 +74,11 @@
           </table>
         </div>
 
-
+        <script>
+            $(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+        </script>
     </main>
   </div>
 </div>

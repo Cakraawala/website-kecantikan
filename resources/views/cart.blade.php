@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title')
-<title>{{ $title }}</title>
+<title>Cakra | {{ $title }}</title>
 @endsection
 @section('content')
 
@@ -35,7 +35,12 @@
                                 <td>{{ $no++}}</td>
                                 <td><a href="/products/{{ $cd->products->slug }}" class="nav-link" style="color:black">{{$cd->products->nm_products}}</a></td>
                                 <td style="text-align: center">
-                                    <input type="number" value="{{ number_format($cd->quantity) }}" class="form-control quantity update-cart" name="update-cart">
+                                    <form action="{{ route('update.cart') }}" method="post">
+                                        @csrf
+                                    <input type="hidden" name="id" value="{{$cd->id}}">
+                                    <input type="number" value="{{ number_format($cd->quantity) }}" class="form-control quantity update-cart" name="quantity">
+                                    <button class="btn btn-success" type="submit">Update</button>
+                                    </form>
                                 </td>
                                 {{-- <td style="text-align: center">{{$cd->quantity}}</td> --}}
                                 <td> Rp.{{ number_format($cd->products->price)}}</td>
@@ -44,7 +49,7 @@
                                     <form action="/cart/{{ $cd->id }}/delete" method="post">
                                         @csrf
                                         {{-- {{ method_field('DELETE')}} --}}
-                                        <button  onclick="return confirm(' Are you sure to delete this post?')" class="btn btn-danger btn-sm remove-from-cart" type="submit"><i class="fa fa-trash-o"></i></button>
+                                        <button  onclick="return confirm(' Are you sure to delete this Product?')" class="btn btn-danger btn-sm remove-from-cart" type="submit"><i class="fa fa-trash-o"></i></button>
                                     </form>
 
                                 </td>
@@ -76,44 +81,6 @@
 
 @section('scripts')
 <script type="text/javascript">
-
-    $(".update-cart").change(function (e) {
-        e.preventDefault();
-
-        $.ajax({
-            url: '{{ route('update.cart') }}',
-            method: "patch",
-            data: {
-                // _token: '{{ csrf_token() }}',
-                id: $("#cart_details_id").val(),
-                quantity: $("#quantity").val(),
-            },
-            success: function (response) {
-               window.location.reload();
-            }
-        });
-    });
-
-    // $(".remove-from-cart").click(function (e) {
-    //     e.preventDefault();
-
-    //     var ele = $(this);
-
-    //     if(confirm("Are you sure want to remove?")) {
-    //         $.ajax({
-    //             url: '{{ route('remove.from.cart') }}',
-    //             method: "DELETE",
-    //             data: {
-    //                 _token: '{{ csrf_token() }}',
-    //                 id: ele.parents("tr").attr("data-id")
-    //             },
-    //             success: function (response) {
-    //                 window.location.reload();
-    //             }
-    //         });
-    //     }
-    // });
-
 </script>
 
 @endsection

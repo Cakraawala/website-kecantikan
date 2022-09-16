@@ -9,7 +9,7 @@
 <main class="col-md-9 ms-sm-auto mt-2 col-lg-10 px-md-4">
 <div class="d-flex justify-content-between flex-wrap
         flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Create new  Payment</h1>
+    <h1 class="h2">Create new Delivery</h1>
 </div>
 
 <div class="col-lg-8">
@@ -35,14 +35,6 @@
 
           <input type="number" class="form-control"
             id="estimasi" name ='estimasi' required>
-        </div>
-
-        <div class="mb-3">
-
-          <label for="nocs" class="form-label">Nomer Customer Service</label>
-
-          <input type="text" class="form-control"
-            id="nocs" name ='nocs' required>
         </div>
 
         <button type="submit" class="btn btn-primary">Create!</button>

@@ -56,7 +56,7 @@
                          <i class="fas fa-lock"></i>
                     </div>
                     <div class="div">
-                        <input type="password" name="password_confirmation" id="password_confirmation" required class="input" placeholder="Confirmation Password">
+                        <input type="password" name="confirmation_password" id="confirmation_password" required class="input" placeholder="Confirmation Password">
                  </div>
               </div>
             	<a href="/login" class="nav-link">Login</a>

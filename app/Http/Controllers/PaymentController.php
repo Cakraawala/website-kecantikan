@@ -8,11 +8,17 @@ use Illuminate\Http\Request;
 class PaymentController extends Controller
 {
     public function dashboardindex(){
+        if(auth()->guest()){
+            return redirect('/');
+        }
+        if(auth()->user()->is_admin == 0){
+            abort(404);
+        }
         $payment = Payment::orderBy('id', 'asc');
 
         if(request('search')){
             $payment->where('nm_payment', 'like', '%'. request('search') . '%' )
-            ->orWhere('fee', 'like', '%' . request('search'))->orWhere('id', 'like' , '%' . request('search'));
+            ->orWhere('fee', 'like', '%' . request('search'). '%')->orWhere('id', 'like' , '%' . request('search'));
         }
 
         return view('d.payment.index', ['payment' => $payment->get(), 'title' => 'Payment']);
@@ -27,6 +33,12 @@ class PaymentController extends Controller
 
     public function create(Request $request)
     {
+        if(auth()->guest()){
+            return redirect('/');
+        }
+        if(auth()->user()->is_admin == 0){
+            abort(404);
+        }
         $payment = Payment::all();
         return view('d.payment.create', ['payment' => $payment,  'title' => 'Buat data Payment', 'payment' => $payment]);
         Payment::create($request->all());
@@ -41,8 +53,15 @@ class PaymentController extends Controller
 
     public function edit($id)
     {
+        if(auth()->guest()){
+            return redirect('/');
+        }
+        if(auth()->user()->is_admin == 0){
+            abort(404);
+        }
         $payment = Payment::findOrFail($id);
-        return view('d.payment.edit', ['payment'=> $payment, 'title' => 'Edit data payment', 'payment' => Payment::all()]);
+        // dd($payment);
+        return view('d.payment.edit', ['payment'=> $payment, 'title' => 'Edit data payment']);
 
     }
     public function update(Request $request, $id)

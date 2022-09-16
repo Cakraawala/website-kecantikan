@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Checkout;
 use App\Models\District;
 use App\Models\Province;
 use App\Models\Regency;
@@ -11,11 +12,17 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     public function index(){
+        if(auth()->guest()){
+            return redirect('/');
+        }
+        if(auth()->user()->is_admin == 0){
+            abort(404);
+        }
          $User = User::orderBy('id', 'asc')->where('is_admin', 0);
          // $userprovince = $User->Province->name;
         if(request('search')){
             $User->where('name', 'like', '%'. request('search') . '%' )
-            ->orWhere('id', 'like', '%' . request('search'))->orWhere('username', 'like', '%' . request('search'));
+            ->orWhere('id', 'like', '%' . request('search'))->orWhere('username', 'like', '%' . request('search'))->orWhere('email', 'like', '%' . request('search') . '%');
         }
         // $user = User::with('province', 'regency', 'district')->orderBy('id', 'asc');
         return view('d.user.user', ['user' => $User->get()->where('is_admin', 0), 'title' => 'User']);
@@ -23,6 +30,12 @@ class UserController extends Controller
 
     public function create(Request $request)
     {
+        if(auth()->guest()){
+            return redirect('/');
+        }
+        if(auth()->user()->is_admin == 0){
+            abort(404);
+        }
         return view('d.user.create', ['user' => User::all(), 'title' => 'Buat data User']);
         User::create($request->all());
         return redirect('/dashboard/user')->with('success', 'Data User Berhasil Dibuat');
@@ -48,10 +61,20 @@ class UserController extends Controller
      */
     public function show($id)
     {
+        if(auth()->guest()){
+            return redirect('/');
+        }
+        if(auth()->user()->is_admin == 0){
+            abort(404);
+        }
         // $admin = User::find($id);
-        $admin = User::findOrFail($id);
-        $barang = User::where('id_supplier', '=' , $id)->get();
-        return view('admin.show',  ['data_supplier' => $admin, 'data_barang' => $barang]);
+        $user = User::findOrFail($id);
+        $title = $user->username;
+        $checkout = Checkout::where('users_id', $user->id)->get();
+        // $c = Checkout::where('users_id', $user->id)->first();
+        // $cc = $c->carts->detail;
+        // dd($cc);
+        return view('d.user.show', compact('user','title','checkout'));
     }
 
     /**
@@ -62,6 +85,12 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+        if(auth()->guest()){
+            return redirect('/');
+        }
+        if(auth()->user()->is_admin == 0){
+            abort(404);
+        }
         $user = User::findOrFail($id);
         return view('d.user.edit', ['user'=> $user,'title' => 'Edit data User']);
 

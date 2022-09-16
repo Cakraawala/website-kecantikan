@@ -29,6 +29,18 @@
                 </div>
               @enderror
           </div>
+        <div class="mb-3">
+
+            <label for="fee" class="form-label"> Fee <span style="font-style: italic;">(required)</span></label>
+
+            <input type="text" class="form-control  @error('fee') is-invalid @enderror"
+              id="fee" name ='fee' value="{{ old('fee', $payment->fee) }}">
+              @error('fee')
+              <div class="invalid-feedback">
+                {{$message }}
+                </div>
+              @enderror
+          </div>
 
 
         <button type="submit" class="btn btn-primary">Update post!</button>

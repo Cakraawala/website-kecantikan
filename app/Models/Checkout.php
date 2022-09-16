@@ -18,7 +18,7 @@ class Checkout extends Model
         return $this->belongsTo(User::class, 'users_id');
     }
     public function payments(){
-        return $this->belongsTo(Payments::class, 'payments_id');
+        return $this->belongsTo(Payment::class, 'payments_id');
     }
     public function deliveries(){
         return $this->belongsTo(Delivery::class, 'deliveries_id');

@@ -10,7 +10,7 @@
        <a href="/dashboard/user/" class="nav-link" style="color:black;"><h2>User</h2> </a>
          <form action="/dashboard/user" method="get" class="ms-2 d-flex mt-3 mb-3 px-5" role="search">
             @csrf
-            <input class="form-control ms-3 me-2" style="width: 450px" type="search" placeholder="Search... (User name, id User, Username, Email, Nomer, Province)" name="search">
+            <input class="form-control ms-3 me-2" style="width: 450px" type="search" placeholder="Search... (Id, Name, Username, Email)" name="search">
             <button class="btn btn-outline-secondary" type="submit"><i class="fa fa-search"></i></button>
         </form>
         <div class="btn-toolbar mb-2 mb-md-0">
@@ -34,7 +34,7 @@
     @endif
 
       <div class="table-responsive">
-          <table class="table table-striped table-sm">
+        <table class="table table-bordered table-striped" id="mytable">
             <thead>
               <tr>
                 <th scope="col">Id</th>
@@ -58,23 +58,35 @@
                   <td> {{ $user->email ?? '-' }}</td>
                   <td>{{ $user->no_wa ?? '-' }}</td>
                   {{-- <td>{{ $user->tgl_lhr }}</td> --}}
-                  <td> {{ $user->jk }}</td>
+                  <td>
+                    @if ($user->jk == 'L')
+                        Pria
+                        @elseif ($user->jk == 'P')
+                        Wanita
+                    @endif</td>
                   <td>{{ $user->code_pos ??'-' }}</td>
                   <td>{{ $user->address ?? '-' }}</td>
 
                   <td>
+                    <form action="/dashboard/user/{{ $user->id }}/edit" class="d-inline">
+                    @csrf
+                    <button class="badge bg-warning border-0">
+                        <span>Edit</span>
+                    </button>
+                </form>
 
-                      <a href="/dashboard/user/{{ $user->id }}/edit" class="badge bg-warning">
-                        <i class="fa-solid fa-pen">Edit</i>
-                    </a>
-                    {{-- <a href="/dashboard/user/show" class="badge bg-success">
-                        <span data-feather="eye">Show</span>
-                      </a> --}}
+                      <form action="/dashboard/user/{{ $user->id }}/show" class="d-inline">
+                        @csrf
+
+                            <button class="badge bg-Success border-0">
+                                <span> Show </span>
+                            </button>
+                    </form>
                       <form action="/dashboard/user/{{ $user->id }}/delete" class="d-inline">
                         @csrf
                         {{-- @method('delete') --}}
                             <button class="badge bg-danger border-0"
-                            onclick="return confirm(' Are you sure to delete this data?')">
+                            onclick="return confirm(' Are you sure to delete this user?')">
                                 <span> Delete</span>
                             </button>
                     </form>
@@ -82,6 +94,11 @@
                 </tr>
                 @endforeach
               </tbody>
+              <script>
+              $(document).ready( function () {
+              $('#mytable').DataTable();
+                } );
+            </script>
           </table>
         </div>
 
@@ -89,4 +106,5 @@
     </main>
   </div>
 </div>
+
 @endsection

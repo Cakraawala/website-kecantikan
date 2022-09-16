@@ -8,12 +8,17 @@ use Illuminate\Http\Request;
 class DeliveryController extends Controller
 {
     public function dashboardindex(){
-        $delivery = Delivery::all();
-        if(request('search')){
-            $delivery->where('nm_deliver', 'like', '%'. request('search') . '%' )
-            ->orWhere('id', 'like', '%' . request('search'))->orWhere('ongkir', 'like', '%'. request('search'));
+        if(auth()->guest()){
+            return redirect('/');
         }
-        return view('d.delivery.index', ['delivery' => $delivery, 'title' => 'Delivery']);
+        if(auth()->user()->is_admin == 0){
+            abort(404);
+        }
+        $delivery = Delivery::orderBy('id', 'asc');
+        if(request('search')){
+            $delivery->where('nm_deliver', 'like', '%'. request('search') . '%' )->orWhere('id', 'like', '%' . request('search'). '%')->orWhere('ongkir', 'like', '%'. request('search') . '%')->orWhere('estimasi', 'like', '%' . request('search') . '%');
+        }
+        return view('d.delivery.index', ['delivery' => $delivery->get(), 'title' => 'Delivery']);
     }
 
     public function ongkir(Request $request){
@@ -23,6 +28,12 @@ class DeliveryController extends Controller
 
     public function create(Request $request)
     {
+        if(auth()->guest()){
+            return redirect('/');
+        }
+        if(auth()->user()->is_admin == 0){
+            abort(404);
+        }
         return view('d.delivery.create', ['delivery' => Delivery::all(),  'title' => 'Buat data Delivery']);
         delivery::create($request->all());
         return redirect('/dashboard/delivery')->with('success', 'Data Category product Berhasil Dibuat');
@@ -35,20 +46,26 @@ class DeliveryController extends Controller
 
     public function edit($id)
     {
-        $delivery = delivery::findOrFail($id);
+        if(auth()->guest()){
+            return redirect('/');
+        }
+        if(auth()->user()->is_admin == 0){
+            abort(404);
+        }
+        $delivery = Delivery::findOrFail($id);
         return view('d.delivery.edit', ['delivery'=> $delivery, 'title' => 'Edit data delivery']);
 
     }
 
     public function update(Request $request, $id)
     {
-        $delivery = delivery::findOrFail($id);
+        $delivery = Delivery::findOrFail($id);
         $delivery->update($request->all());
         return redirect('/dashboard/delivery')->with('success','Category Product  Berhasil di Perbarui');
     }
 
     public function delete($id){
-        $delivery = delivery::findOrFail($id);
+        $delivery = Delivery::findOrFail($id);
         $delivery->delete($delivery);
         return redirect('/dashboard/delivery')->with('success','Category Product Sukses Di Dihapus');
     }

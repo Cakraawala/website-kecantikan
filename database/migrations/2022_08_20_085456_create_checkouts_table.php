@@ -28,7 +28,9 @@ return new class extends Migration
             $table->foreign('payments_id')->references('id')->on('payments')->onDelete('cascade');
             $table->foreign('deliveries_id')->references('id')->on('deliveries')->onDelete('cascade');
             $table->string('no_resi')->nullable();
+            $table->date('tgl')->nullable();
             $table->string('status');
+            $table->string('image')->nullable();
             // $table->text('catatan');
             $table->timestamps();
         });

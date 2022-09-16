@@ -18,8 +18,6 @@ return new class extends Migration
             $table->bigInteger('products_id')->index()->unsigned();
             $table->bigInteger('carts_id')->index()->unsigned();
             $table->integer('quantity')->default(0);
-            $table->integer('discount')->default(0);
-            $table->bigInteger('price')->default(0)->unsigned();
             $table->bigInteger('subtotal')->unsigned()->default(0);
             $table->foreign('carts_id')->references('id')->on('carts')->onDelete('cascade');
             $table->foreign('products_id')->references('id')->on('products')->onDelete('cascade');

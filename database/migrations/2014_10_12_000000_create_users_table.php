@@ -24,7 +24,6 @@ return new class extends Migration
             $table->enum('jk',['?','L', 'P'])->default('?');
             $table->integer('code_pos')->nullable();
             $table->longText('address')->nullable();
-            // $table->string('photo_img')->nullable();
             $table->boolean('is_admin')->default(false);
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();

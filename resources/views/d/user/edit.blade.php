@@ -76,8 +76,8 @@
               </label>
               <select value="{{ old('jk', $user->jk) }}"name="jk" id="jk" class="form-select  @error('jk') is-invalid @enderror">
                   <option value="?" selected>Pilih Jenis Kelamin</option>
-                  <option value="Pria"> Pria </option>
-                  <option value="Wanita"> Wanita </option>
+                  <option value="L"> Pria </option>
+                  <option value="P"> Wanita </option>
               </select>
         @error('jk')
          <div class="invalid-feedback">

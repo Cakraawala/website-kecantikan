@@ -39,7 +39,7 @@
                         </div>
                         <div class="card-body">
                             <table class="table table-striped">
-                                <thead>
+                                {{-- <thead> --}}
                                     <tr>
                                         <th width="5%">No.</th>
                                         <th width="40%">Product</th>
@@ -48,8 +48,6 @@
                                         <th width="20%">Subtotal product</th>
                                         {{-- <th width="10%">Action</th> --}}
                                     </tr>
-                                </thead>
-                                <tbody>
                                     @php
                                         $no = 1;
                                         @endphp
@@ -63,8 +61,8 @@
                                         <td>Rp.{{number_format($cd->subtotal)}}</td>
                                     </tr>
                                     @endforeach
-                                </tbody>
-                                <tfoot>
+                                {{-- </tbody> --}}
+                                {{-- <tfoot> --}}
                                     <tr>
                                         @php
                                         $checkout_main = \App\Models\Cart::where('users_id', auth()->user()->id)->where('status', 'cart')->first();
@@ -76,7 +74,7 @@
                                         <td align="right"><h5><strong>Subtotal ({{$notif ?? '0'}} Product): </strong></td>
                                         <td align="left"> <h5><span style="color:red">Rp.{{ number_format($checkout->subtotal ?? 0) }} </span>  </h5></td>
                                     </tr>
-                                    </tfoot>
+                                    {{-- </tfoot> --}}
                                 </table>
                                 @endif
                         </div>
@@ -90,7 +88,7 @@
                                         @endphp
                                     <tr>
                                         <td width="20%"><h5>Delivery Option</h5> </td>
-                                        <td>:</td>
+                                        <td width="10%">:</td>
                                         <td align="left" width="40%">
                                             <select name="deliveries_id" id="deliveries_id" required class="form-select @error('deliveries_id') is-invalid @enderror">
                                               <option selected value="">Pilih delivery</option>
@@ -98,9 +96,9 @@
                                               <option value="{{ $dv->id }}" id="deliveries_id"> {{ $dv->nm_deliver }} </option>
                                               @endforeach
                                         </td>
-                                        <td></td>
+                                        <td width="8.5%"></td>
 
-                                        <td colspan="5" align="left" ><h6><strong>Rp.<span name="ongkir" id="ongkir"></span></strong></h6></td>
+                                        <td align="left" ><h6><strong>Rp.<span name="ongkir" id="ongkir"></span></strong></h6></td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -111,7 +109,7 @@
                                         @endphp
                                     <tr>
                                         <td width="20%"><h5>Payment methode</h5> </td>
-                                        <td>:</td>
+                                        <td width=10%>:</td>
                                         <td align="left" width="40%">
                                             <select name="payments_id" id="payments_id" required class="form-select @error('payments_id') is-invalid @enderror">
                                               <option selected>Pilih Payment</option>
@@ -119,8 +117,8 @@
                                               <option value="{{ $pay->id }}" id="payments_id"> {{ $pay->nm_payment }} </option>
                                               @endforeach
                                         </td>
-                                        <td></td>
-                                        <td colspan="5" align="left" ><h6><strong>Rp.<span name="fee" id="fee" ></span></strong></h6></td>
+                                        <td width="8.5%"></td>
+                                        <td align="left" ><h6><strong>Rp.<span name="fee" id="fee" ></span></strong></h6></td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -137,21 +135,21 @@
                                             <td> </td>
                                             <td></td>
                                             <td width="15%">Subtotal Produk :</td>
-                                            {{-- <td width="10%">:</td> --}}
+
                                             <td width="21%">Rp. {{ number_format($checkout->subtotal ?? 0) }}</td>
                                         </tr>
                                         <tr>
                                             <td> </td>
                                             <td></td>
                                             <td width="15%">Ongkos Kirim :</td>
-                                            {{-- <td width="10%">:</td> --}}
+
                                             <td width="21%">Rp. <span name="ongkir1" id="ongkir1"></span></td>
                                         </tr>
                                         <tr>
                                             <td> </td>
                                             <td></td>
                                             <td width="15%">Pajak Pembayaran :</td>
-                                            {{-- <td width="10%">:</td> --}}
+
                                             <td width="21%">Rp. <span name="fee1" id="fee1"></span></td>
                                         </tr>
 
@@ -159,7 +157,7 @@
                                             <td> </td>
                                             <td></td>
                                             <td width="15%"><h5 class="mt-1">Subtotal :</h5></td>
-                                            {{-- <td width="10%">:</td> --}}
+
                                             <td width="21%"><h3 style="color: red" class="mt-1">Rp. <span name="subtotal" id="subtotal" onChange=""></span></h3></td>
                                         </tr>
                                         </tbody>
@@ -239,21 +237,6 @@
                 })
     })
 
-    // const subtotal = document.querySelector("subtotal");
-    // const subtotal = document.querySelector("payment");
-    // const subtotal = document.querySelector("delivery");
 
-    // function  jumlah() {
-
-    // }
-
-
-
-    // $(document).ready(function()){
-    //     $("#delivery").change(function(e){
-    //         console.log(e)
-    //     // })
-    //     })
-    // }
 </script>
 @endsection

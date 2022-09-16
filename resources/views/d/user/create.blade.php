@@ -15,9 +15,7 @@
 <div class="col-lg-8">
     <form action="/dashboard/user" method="post" class="mb-5" enctype="multipart/form-data">
         @csrf
-
         <div class="mb-3">
-
           <label for="name" class="form-label">Nama User <span style="font-style: italic;">(required)</span></label>
 
           <input type="text" class="form-control"
@@ -41,12 +39,12 @@
 
         <div class="mb-3">
           <label for="no_wa" class="form-label"> Nomer telepon </label>
-          <input type="text" class="form-control" id="no_wa" name="no_wa" required" >
+          <input type="text" class="form-control" id="no_wa" name="no_wa">
         </div>
 
         <div class="mb-3">
           <label for="tgl_lhr" class="form-label"> Tanggal Lahir </label>
-          <input type="date" class="form-control" id="tgl_lhr" name="tgl_lhr" required">
+          <input type="date" class="form-control" id="tgl_lhr" name="tgl_lhr">
         </div>
 
         <div class="mb-3">
@@ -55,20 +53,20 @@
             </label>
             <select name="jk" id="jk" class="form-select">
                 <option value="?" selected>Pilih Jenis Kelamin</option>
-                <option value="Pria"> Pria </option>
-                <option value="Wanita"> Wanita </option>
+                <option value="L"> Pria </option>
+                <option value="P"> Wanita </option>
             </select>
           </div>
 
         <div class="mb-3">
           <label for="code_pos" class="form-label">Kode Pos </label>
-          <input type="text" class="form-control" id="code_pos" name="code_pos" required" >
+          <input type="text" class="form-control" id="code_pos" name="code_pos"" >
         </div>
 
         <div class="mb-3">
-          <label for="address" class="form-label"> Address </label>
-          <input type="text" class="form-control" id="address" name="address" required" >
-        </div>
+            <label for="address" class="form-label"> Address </label>
+            <textarea class="form-control" id="address" name="address" ></textarea>
+          </div>
 
         <button type="submit" class="btn btn-primary">Create!</button>
       </form>

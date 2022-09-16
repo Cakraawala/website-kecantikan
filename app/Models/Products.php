@@ -16,8 +16,8 @@ class Products extends Model
         return $this->belongsTo(CategoryProduct::class,'category_products_id', 'id');
     }
 
-    public function cartdetails(){
-        return $this->hasMany(CartDetails::class);
+    public function detail(){
+        return $this->hasMany(CartDetails::class, 'products_id', 'id');
     }
 
     public static function find($slug){

@@ -21,10 +21,13 @@ class Cart extends Model
         return $this->belongsTo(User::class, 'users_id','id');
     }
 
-    static function new_cart(){
-        $data = Cart::create([
-            'status' => 'belum bayar'
-        ]);
-        return $data->carts_id;
+    public function checkouts(){
+        return $this->hasOne(Checkout::class, 'carts_id', 'id');
     }
+    // static function new_cart(){
+    //     $data = Cart::create([
+    //         'status' => 'belum bayar'
+    //     ]);
+    //     return $data->carts_id;
+    // }
 }

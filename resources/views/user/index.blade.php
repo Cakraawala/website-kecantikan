@@ -11,15 +11,16 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h4><i class="fa fa-user"> </i>&nbsp;My Profile</h4>
-                    <a href="/my-account/edit">Edit profile</a>
+
+                    <h4><i class="fa fa-user"></i>&nbsp;My Profile <a href="/my-account/edit"><i class="fa fa-pencil" style="margin-left:85%"></i></a></h4>
+
                 </div>
                 <div class="card-body">
-                    <table class="table table-striped">
+                    <table width="100px" class="table table-striped">
                         <tbody>
                             <tr>
-                                <td> Name </td>
-                                <td> : </td>
+                                <td width="35%"> Name </td>
+                                <td width="1%"> : </td>
                                 <td> {{ $user->name ?? '-' }} </td>
                             </tr>
                             <tr>

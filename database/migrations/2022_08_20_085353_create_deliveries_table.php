@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('nm_deliver');
             $table->string('estimasi');
             $table->string('ongkir');
-            $table->string('nocs')->nullable();
             $table->timestamps();
         });
     }

@@ -6,7 +6,7 @@
 
 @section('content')
 
-<div class="containersas" style="margin-top: 100px;margin-bottom:650px">
+<div class="containersas" style="margin-top: 100px;margin-bottom:100px">
 <div class="card">
    <div class="card-header">
         <h4> <i class="fa fa-pencil"></i> Edit Profile </h4>
@@ -19,7 +19,7 @@
 
             <div class="mb-3">
 
-            <label for="name" class="form-label"> Nama User <span style="font-style: italic;"></span></label>
+            <label for="name" class="form-label"> Nama User <span style="color: red">*</span></label>
 
                 <input type="text" class="form-control  @error('name') is-invalid @enderror"
                   id="name" name ='name' value="{{ old('name', $user->name) }}">
@@ -31,7 +31,7 @@
               </div>
 
               <div class="mb-3">
-                  <label for="username" class="form-label">Username <span style="font-style: italic;"></span></label>
+                  <label for="username" class="form-label">Username <span style="color: red">*</span></label>
                   <input type="text" class="form-control @error('username') is-invalid @enderror" id="username" name="username" value="{{ old('username', $user->username) }}">
                   @error('username')
                   <div class="invalid-feedback">
@@ -41,7 +41,7 @@
               </div>
 
               <div class="mb-3">
-                <label for="email" class="form-label"> Email</label>
+                <label for="email" class="form-label">  Email <span style="color: red">*</span> </label>
                 <input type="text" class="form-control  @error('email') is-invalid @enderror" id="email" value="{{ old('email', $user->email) }}" name="email">
                  @error('email')
                   <div class="invalid-feedback">
@@ -51,7 +51,7 @@
               </div>
 
               <div class="mb-3">
-                <label for="no_wa" class="form-label"> Nomer telepon </label>
+                <label for="no_wa" class="form-label"> Nomer telepon <span style="color: red">*</span> </label>
                 <input type="text" class="form-control  @error('no_wa') is-invalid @enderror" id="no_wa" value="{{ old('no_wa', $user->no_wa) }}"name="no_wa">
                  @error('no_wa')
                   <div class="invalid-feedback">
@@ -88,7 +88,7 @@
 
 
               <div class="mb-3">
-                <label for="code_pos" class="form-label"> Code Pos </label>
+                <label for="code_pos" class="form-label"> Kode Pos </label>
                 <input type="text" class="form-control  @error('code_pos') is-invalid @enderror" id="code_pos" value="{{ old('code_pos', $user->code_pos) }} " name="code_pos" >
                  @error('code_pos')
                   <div class="invalid-feedback">

@@ -10,130 +10,55 @@
 
     <!-- Main content -->
     <section class="content">
-        <div class="container-atasas" style="margin-top: 80px;">
+
+        <div class="container-atasas" style="margin-top: 100px;">
+            @if (session()->has('success'))
+
+            <div class="alert alert-success alert-dismissible fade show" style="z-index: 1000" role="alert"> {{session('success')}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+            </div>
+
+            @endif
             <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
 
-  @if (session()->has('success'))
-
-    <div class="alert alert-success alert-dismissible fade show" style="z-index: 1000" role="alert"> {{session('success')}}
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
-    </div>
-
-    @endif
-
-
-                <div class="col-md-5 p-lg-5 mx-auto my-5">
+                <div class="col-md-12 p-lg-5 mx-auto my-5" style="height: 300px">
                   <h1 class="display-4 fw-normal" style="font-family:Brush Script MT;" >Cakra Company</h1>
-                  <p class="lead fw-normal">Lorem ipsum dolor sit amet lorem ipsum lorem ipsum lorem ipsum</p>
+                      <p class="lead fw-normal">Menyediakan produk kecantikan skincare Nomer 1 di Indonesia!</p>
                   <!-- <a class="btn btn-outline-secondary" href="#">Coming soon</a> -->
                 </div>
-                <div class="product-device shadow-sm d-none d-md-block"></div>
-                <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
-              </div>
+                <div style="width: 220px" class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+                <div style="width: 230px" class="product-device shadow-sm d-none d-md-block"></div>
 
-              <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
-                <div class="bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
-                  <div class="my-3 py-3">
-                    <h2 class="display-5">Another headline</h2>
-                    <p class="lead">And an even wittier subheading.</p>
-                  </div>
-                  <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
-                </div>
-                <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-                  <div class="my-3 p-3">
-                    <h2 class="display-5">Another headline</h2>
-                    <p class="lead">And an even wittier subheading.</p>
-                  </div>
-                  <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
-                </div>
               </div>
 
         </div>
 
-        <div class="container" style="margin-top: 50px">
-            <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                  <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                  <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                  <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                </div>
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
 
-                  @if ($product1->image)
-                            <img src="{{asset('storage/' . $product1->image)}}"
-                            class="bd-placeholder-img" alt="{{ $product1->nm_products }}" width="100%" fill="#777" focusable="false" aria-hidden="true" height="225">
-                                @else
-                                <img src="https://source.unsplash.com/1000x1000?{{ $product1 }}"
-                                class="bd-placeholder-img" alt="{{ $product1->nm_products }}" width="100%" fill="#777" focusable="false" aria-hidden="true" height="225">
-                            @endif
-
-                    <div class="container">
-                      <div class="carousel-caption text-start">
-                        <h1>Example headline.</h1>
-                        <p>Some representative placeholder content for the first slide of the carousel.</p>
-                        <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="carousel-item">
-                    @if ($product1->image)
-                            <img src="{{asset('storage/' . $product1->image)}}"
-                            class="bd-placeholder-img" alt="{{ $product1->nm_products }}" width="100%" fill="#777" focusable="false" aria-hidden="true" height="225">
-                                @else
-                                <img src="https://source.unsplash.com/1000x1000?{{ $product1 }}"
-                                class="bd-placeholder-img" alt="{{ $product1->nm_products }}" width="100%" fill="#777" focusable="false" aria-hidden="true" height="225">
-                            @endif
-
-                    <div class="container">
-                      <div class="carousel-caption">
-                        <h1>Another example headline.</h1>
-                        <p>Some representative placeholder content for the second slide of the carousel.</p>
-                        <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="carousel-item">
-              @if ($product1->image)
-                            <img src="{{asset('storage/' . $product1->image)}}"
-                            class="bd-placeholder-img" alt="{{ $product1->nm_products }}" width="100%" fill="#777" focusable="false" aria-hidden="true" height="225">
-                                @else
-                                <img src="https://source.unsplash.com/1000x1000?{{ $product1 }}"
-                                class="bd-placeholder-img" alt="{{ $product1->nm_products }}" width="100%" fill="#777" focusable="false" aria-hidden="true" height="225">
-                            @endif
-                    <div class="container">
-                      <div class="carousel-caption text-end">
-                        <h1>One more for good measure.</h1>
-                        <p>Some representative placeholder content for the third slide of this carousel.</p>
-                        <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
-              </div>
-
+        <div class="container" style="margin-top: 70px">
 
               <!-- Marketing messaging and featurettes
               ================================================== -->
               <!-- Wrap the rest of the page in another container to center all the content. -->
-
-
                 <hr class="featurette-divider">
                 <div class="row featurette">
                   <div class="col-md-7">
-                    <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It’ll blow your mind.</span></h2>
-                    <p class="lead">Some great placeholder content for the first featurette here. Imagine some exciting prose here.</p>
+                    <a style="text-decoration:none;color:black" href="/products/{{ $pts1->slug }}">
+                    <h2 class="featurette-heading">{{ $pts1->nm_products }}. <span class="text-muted">Barang pertama dan terlaris!</span></h2></a>
+                    @if ($pts1->deskripsi)
+                    <p class="lead">
+                        {{ $pts1->deskripsi }}
+                    </p>
+                    @else
+                    <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo nihil quia dolorum unde autem perferendis magnam delectus adipisci! Repellendus, ipsum totam quod dolorem rerum unde illum odio quia velit illo..</p>
+                        @endif
                   </div>
                   <div class="col-md-5">
-                    <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+                    @if ($pts1->image)
+                    <img class="bd-placeholder-img overflow-hidden bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src="{{ asset('storage/'. $pts1->image) }}">
+
+                    @else
+                    <img class="bd-placeholder-img overflow-hidden bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src="https://source.unsplash.com/500x500?{{ $pts1->nm_products }}">
+                    @endif
 
                   </div>
                 </div>
@@ -142,12 +67,23 @@
 
                 <div class="row featurette">
                   <div class="col-md-7 order-md-2">
-                    <h2 class="featurette-heading">Oh yeah, it’s that good. <span class="text-muted">See for yourself.</span></h2>
-                    <p class="lead">Another featurette? Of course. More placeholder content here to give you an idea of how this layout would work with some actual real-world content in place.</p>
+                    <a style="text-decoration:none;color:black" href="/products/{{ $pts2->slug }}"><h2 class="featurette-heading">{{ $pts2->nm_products}}. <span class="text-muted">Barang terbaru.</span></h2></a>
+
+                    @if ($pts2->deskripsi)
+                    <p class="lead mt-3">
+                        {{ $pts2->deskripsi }}
+                    </p>
+                    @else
+                    <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo nihil quia dolorum unde autem perferendis magnam delectus adipisci! Repellendus, ipsum totam quod dolorem rerum unde illum odio quia velit illo..</p>
+                        @endif
                   </div>
                   <div class="col-md-5 order-md-1">
-                    <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+                    @if ($pts2->image)
+                    <img class="bd-placeholder-img overflow-hidden bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src="{{ asset('storage/'. $pts2->image) }}">
 
+                    @else
+                    <img class="bd-placeholder-img overflow-hidden bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src="https://source.unsplash.com/500x500?{{ $pts2->nm_products }}">
+                    @endif
                   </div>
                 </div>
 
@@ -155,18 +91,90 @@
 
                 <div class="row featurette">
                   <div class="col-md-7">
-                    <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-                    <p class="lead">And yes, this is the last block of representative placeholder content. Again, not really intended to be actually read, simply here to give you a better view of what this would look like with some actual content. Your content.</p>
+                    <h2 class="featurette-heading">Coming soon! <span class="text-muted">Blue Calming Mask Moisturizer</span></h2>
+                    <p class="lead">Menenangkan kulit, bantu perbaiki skin barrier, mempercepat penyembuhan jerawat dan bekas jerawat. memberikan kelembaban ekstra untuk kulit wajah yang kenyal dan kencang.</p>
                   </div>
                   <div class="col-md-5">
-                    <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+                    <img class="bd-placeholder-img overflow-hidden bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src="/img/comingsoon.jpg">
 
                   </div>
                 </div>
 
                 <hr class="featurette-divider">
 
-                <!-- /END THE FEATURETTES -->
+                {{-- <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+
+                      @php
+                          $nob = 1;
+                          $pp = 2;
+                      @endphp
+                      @foreach ($categories as $c)
+                      @if ($c->id == 1)
+                      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                      @else
+                      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="{{ $nob++ }}" aria-label="Slide {{$pp++ }}"></button>
+                      @endif
+                      @endforeach
+                      </div>
+
+                    <div class="carousel-inner">
+                     @foreach ($categories as $cp)
+                      @if ($cp->id == 1)
+                      <div class="carousel-item active">
+                        @if ($cts->image)
+                                  <img src="{{asset('storage/' . $cts->image)}}"
+                                  class="bd-placeholder-img" alt="{{ $cts->nm_category }}" width="100%" fill="#777" focusable="false" aria-hidden="true" height="225">
+                                      @else
+                                      <img src="https://source.unsplash.com/1000x1000?{{ $cts->nm_category }}"
+                                      class="bd-placeholder-img" alt="{{ $cts->nm_category }}" width="100%" fill="#777" focusable="false" aria-hidden="true" height="225">
+                                  @endif
+
+                          <div class="container">
+                            <div class="carousel-caption text-start">
+                              <h1>{{ $cts->nm_category }}</h1>
+                              <p>Some representative placeholder content for the first slide of the carousel.</p>
+                              <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
+                            </div>
+                          </div>
+                        </div>
+                        @else
+                        <div class="carousel-item">
+                            @if ($cp->image)
+                            <img src="{{asset('storage/' . $cp->image)}}"
+                            class="bd-placeholder-img" alt="{{ $cp->nm_category }}" width="100%" fill="#777" focusable="false" aria-hidden="true" height="225">
+                            @else
+                            <img src="https://source.unsplash.com/1000x1000?{{ $cp->nm_category }}"
+                            class="bd-placeholder-img" alt="{{ $cp->nm_category }}" width="100%" fill="#777" focusable="false" aria-hidden="true" height="225">
+                            @endif
+
+                            <div class="container">
+                                <div class="carousel-caption">
+                                    <h1>{{ $cp->nm_category }}</h1>
+                                    <p>Some representative placeholder content for the second slide of the carousel.</p>
+                                    <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        @endif
+                        @endforeach
+
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                  </div> --}}
+
+
+
+
+
+
 
               </div><!-- /.container -->
 
@@ -184,18 +192,26 @@
                         Kategori
                       </h3>
                     </div><!-- /.card-header -->
-
+                    <div class="card-body">
                     <div class="row ms-1">
                         @foreach ($categories as $category)
-                        <div class="col-sm-1 mb-2 mt-2">
+                        <div class="col-sm-1 mb-2 mt-2 me-4 ms-4">
                             <a class ="text-decoration-none text-light"href="/categories/{{ $category->slug }}">
-                                <div class="card bg-dark text-white">
+                            <div class="card-group">
+                            <div class="card text-dark">
+                                @if ($category->image)
+                              <img src="{{ asset('storage/' . $category->image)}}" alt="{{ $category->nm_category }}" style="width: 100px;height:100px;" alt="{{ $category->nm_category }}">
+                                  @else
+                                  <img src="https://source.unsplash.com/1200x1500?{{ $category->nm_category }}"
+                                alt="{{ $category->nm_category }}" style="height: 100px;width:80px">
+                              @endif
 
-                            <img class= "card-img"src="https://source.unsplash.com/500x400?{{ $category->nm_category }}" alt="{{ $category->nm_category }}">
 
-                            <div class="card-img-overlay d-flex align-items-center p-0">
+                                <div class="card-img-overlay d-flex align-items-center p-0">
+                                </div>
+                                <h6 class="card-title text-center p-2" style="height: 40px">{{ $category->nm_category }}</h6>
                             </div>
-                            <h5 class="card-title text-center p-2">{{ $category->nm_category }}</h5>
+                            {{-- </div> --}}
                         </a>
                         </div>
                     </div>
@@ -203,6 +219,9 @@
                     </div>
                 </div>
             </div>
+            <hr class="featurette-divider">
+
+            {{-- </div> --}}
 
         <!--     <div class="row py-lg-5">
                 <div class="col-lg-6 col-md-8 mx-auto">
@@ -230,10 +249,10 @@
 
                             @if ($product->image)
                             <img src="{{asset('storage/' . $product->image)}}"
-                            class="bd-placeholder-img card-img-top" alt="{{ $product->CategoryProduct->nm_category }}" width="214" height=225">
+                            class="bd-placeholder-img card-img-top" alt="{{ $product->nm_products }}" width="214" height=225">
                                 @else
-                                <img src="https://source.unsplash.com/700x400?{{ $product->CategoryProduct->nm_category }}"
-                                class="bd-placeholder-img card-img-top" alt="{{ $product->CategoryProduct->nm_category }}" width="214" height="225">
+                                <img src="https://source.unsplash.com/700x400?{{ $product->nm_products }}"
+                                class="bd-placeholder-img card-img-top" alt="{{ $product->nm_products }}" width="214" height="225">
                             @endif
 
 
@@ -241,19 +260,26 @@
                           {{-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" src="" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">{{ $product->nm_products }}</text></svg> --}}
 
                           <div class="card-body">
-                          <h4 class="card-text"><a style="text-decoration: none; color:#4d4949;" href="/products/{{ $product->slug }}">{{ $product->nm_products }}</a></h4>
-                          <div class="d-flex justify-content-between align-items-">
+                            <h4 class="card-text"><a style="text-decoration: none; color:#4d4949;" href="/products/{{ $product->slug }}">{{ $product->nm_products }}</a></h4>
+                            <div class="d-flex justify-content-between align-items-">
+                                <h6  style="color: red">Rp.{{ number_format($product->price) }}</h6>
+                                <h6 class="text-muted mb-3">Stock : {{ $product->quantity }}</h6>
+                            </div>
+                            <div class="card-footer">
+                                <div class="d-flex justify-content-between align-items-">
+                                <h6></h6>
+                                <div class="btn-group">
+                                    <form action="/add-to-cart/{{$product->id}}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="quantity" value="1">
+                                        <button class="btn btn-sm btn-outline-success fa fa-shopping-cart" type="submit"></button>
+                                    </form>
+                                    {{-- <a href="{{ route('add.to.cart', $product->id) }}" class="btn btn-sm btn-outline-secondary mt-3 fa fa-shopping-cart"></a> --}}
+                                </div>
+                                </div>
+                            </div>
 
-
-                              <h6  style="color: red">Rp.{{ number_format($product->price) }}</h6>
-
-
-                            <div class="btn-group">
-                                  <a href="{{ route('add.to.cart', $product->id) }}" class="btn btn-sm btn-outline-secondary mt-3 fa fa-shopping-cart"></a>
-                          </div>
-
-                        </div>
-                    </div>
+                      </div>
                     </a>
                       </div>
                   </div>

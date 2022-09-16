@@ -38,12 +38,18 @@
                 @endforeach
             </select>
         </div>
+{{--
+        <div class="mb-3">
+            <label for="slug" class="form-label">Slug</label>
+
+            <input type="text" class="form-control" id="slug" name="slug" readonly value="" >
+          </div> --}}
 
         <div class="mb-3">
           <label for="quantity" class="form-label">Quantity <span style="font-style: italic;">(required)</span></label>
 
           <input type="number" class="form-control @error('quantity') is-invalid @enderror"
-            id="quantity" name ='quantity' required value="{{ old('quantity') }}">
+            id="quantity" name ='quantity' required value="1">
             @error('quantity')
             <div class="invalid-feedback">
                 {{$message}}
@@ -56,7 +62,7 @@
           <label for="price" class="form-label">Price <span style="font-style: italic;">(required)</span></label>
 
           <input type="number" class="form-control @error('price') is-invalid @enderror"
-            id="price" name ='price' required value="{{ old('price') }}">
+            id="price" name ='price' required value="{{ old('price') }}" placeholder="Rp.">
             @error('price')
             <div class="invalid-feedback">
                 {{$message}}
@@ -73,8 +79,8 @@
 
           <label for="deskripsi" class="form-label">Deskripsi</label>
 
-          <input type="text" class="form-control @error('deskripsi') is-invalid @enderror"
-            id="deskripsi" name ='deskripsi' value="{{ old('deskripsi') }}">
+          <textarea class="form-control @error('deskripsi') is-invalid @enderror"
+            id="deskripsi" name ='deskripsi' value="{{ old('deskripsi') }}"> </textarea>
             @error('deskripsi')
             <div class="invalid-feedback">
                 {{$message}}
@@ -82,8 +88,9 @@
         @enderror
         </div>
 
-        <div c<div class="mb-5">
-            <label for="image" class="form-label"> Upload Image Product</label>
+        <div class="mb-5">
+            <label for="image" class="form-label"> Upload Image Product &nbsp; (<i>max 1024kb)</i></label>
+            <img class="img-preview img-fluid mb-3 col-sm-5">
             <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image">
             @error('image')
             <div class="invalid-feedback">
@@ -104,14 +111,17 @@
     const nm_products = document.querySelector('#nm_products');
     const slug = document.querySelector('#slug');
 
-    nm_products.addEventListener('change', function(){
-        fetch('/dashboard/products/checkSlug?nm_products=' + nm_products.value)
-            .then(response => response.json())
-            .then(data => slug.value = data.slug)
+    slug.addEventListener('change', function(){
+        success: function(data){
+            // .then(response => response.json())
+            // .then(data => slug.value = data.slug)
+            $("#slug").text(data.nm_products)
+        }
     });
 
     document.addEventListener('trix-file-accept', function(e){
         e.preventDefault();
     })
+
 </script>
 @endsection

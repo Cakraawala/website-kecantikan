@@ -11,7 +11,7 @@
         <a href="/dashboard/payment" class="nav-link text-dark""> <h2>Payment</h2> </a>
           <form action="/dashboard/payment" method="get" class="ms-2 d-flex mt-3 mb-3 px-5" role="search">
             @csrf
-            <input class="form-control ms-3 me-2" style="width: 450px" type="search" placeholder="Search... (Payment name, id Payment, Fee)" name="search">
+            <input class="form-control ms-3 me-2" style="width: 450px" type="search" placeholder="Search... (Id,Payment name, Fee)" name="search">
             <button class="btn btn-outline-secondary" type="submit"><i class="fa fa-search"></i></button>
         </form>
           <div class="btn-toolbar mb-2 mb-md-0">
@@ -34,13 +34,13 @@
 
       @endif
       <div class="table-responsive">
-          <table class="table table-striped table-sm">
+          <table class="table table-bordered table-striped table-lg" id="myTable">
             <thead>
               <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Name Payment</th>
-                <th scope="col">Fee</th>
-                <th scope="col">Info</th>
+                <th scope="col" width="5%">Id</th>
+                <th scope="col" width="20%">Name Payment</th>
+                <th scope="col" width="15%">Fee</th>
+                <th scope="col" width="10%">Info</th>
               </tr>
             </thead>
             <tbody>
@@ -51,13 +51,12 @@
                   <td>Rp. {{ number_format($p->fee) }}</td>
 
                   <td>
-
-                      <a href="/dashboard/payment/{{ $p->id }}/edit" class="badge bg-warning">
-                        <i class="fa-solid fa-pen">Edit</i>
-                    </a>
-                    {{-- <a href="/dashboard/categoryproduct//{{ $p->id }}/show" class="badge bg-success">
-                        <span data-feather="eye">Show</span>
-                      </a> --}}
+                    <form action="/dashboard/payment/{{ $p->id }}/edit" class="d-inline">
+                    @csrf
+                    <button class="badge bg-warning border-0">
+                        <span>Edit</span>
+                    </button>
+                    </form>
                       <form action="/dashboard/payment/{{ $p->id }}/delete" class="d-inline">
                         @csrf
                         {{-- @method('delete') --}}
@@ -73,7 +72,11 @@
           </table>
         </div>
 
-
+        <script>
+            $(document).ready( function () {
+            $('#myTable').DataTable();
+            } );
+        </script>
     </main>
   </div>
 </div>

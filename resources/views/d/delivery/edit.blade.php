@@ -18,36 +18,36 @@
 
           <label for="nm_deliver" class="form-label">Nama Delivery <span style="font-style: italic;"></span></label>
 
-          <input type="text" class="form-control @error('nm_payment') is-invalid @enderror"
-            id="nm_deliver" name ='nm_deliver' value="{{ old('nm_payment', $payment->nm_payment) }}">
+          <input type="text" class="form-control @error('nm_deliver') is-invalid @enderror"
+            id="nm_deliver" name ='nm_deliver' value="{{ old('nm_deliver', $delivery->nm_deliver) }}">
             @error('nm_deliver')
             <div class="invalid-feedback">
               {{$message }}
               </div>
             @enderror
         </div>
+
         <div class="mb-3">
 
           <label for="ongkir" class="form-label">Fee <span style="font-style: italic;">(required)</span></label>
 
-          <input type="text" class="form-control"
-            id="ongkir" name ='ongkir' required>
+          <input type="text" class="form-control @error('ongkir') is-invalid @enderror"
+            id="ongkir" name ='ongkir' required value="{{ old('ongkir', $delivery->ongkir) }}">
+            @error('nm_deliver')
+            <div class="invalid-feedback">
+              {{$message }}
+              </div>
+            @enderror
         </div>
+
         <div class="mb-3">
 
           <label for="estimasi" class="form-label">Estimasi<span style="font-style: italic;">(required)</span></label>
 
-          <input type="number" class="form-control"
-            id="estimasi" name ='estimasi' required>
+          <input type="number" class="form-control @error('estimasi') is-invalid @enderror"
+            id="estimasi" name ='estimasi' value="{{ old('estimasi', $delivery->estimasi) }}" required>
         </div>
 
-        <div class="mb-3">
-
-          <label for="nocs" class="form-label">Nomer Customer Service</label>
-
-          <input type="text" class="form-control"
-            id="nocs" name ='nocs' required>
-        </div>
 
         <button type="submit" class="btn btn-primary">Create!</button>
       </form>

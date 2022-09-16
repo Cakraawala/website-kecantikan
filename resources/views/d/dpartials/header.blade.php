@@ -1,4 +1,4 @@
-<header class="navbar navbar-dark sticky-top bg-dark
+<header class="navbar navbar-dark fixed-top bg-dark
         flex-md-nowrap p-0 shadow">
 
     <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3"
@@ -18,7 +18,7 @@
 
         <form action="/logout" method="post">
             @csrf
-            <button type="submit" class="nav-link px-3 bg-dark border-0">
+            <button type="submit" class="nav-link mt-1 px-4 bg-dark border-0">
                  Logout
             </button>
         </form>
@@ -33,75 +33,57 @@
         <div class="position-sticky pt-3">
           <ul class="nav flex-column">
 
-                <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                    <span>Saved Reports</span>
-                    <a class="link-secondary" href="#" aria-label="Add a new report">
-                        <span data-feather="plus-circle"></span>
-                    </a>
-                    </h6>
+
             <li class="ms-1 nav-item">
               <a class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}" aria-current="page" href="/dashboard">
-                <span data-feather="home"></span>
+                <i class="fa fa-home" aria-hidden="true"></i>
                 Dashboard
               </a>
             </li>
-           <!--  <li class="ms-1 nav-item">
-              <a class="nav-link" aria-current="page" href="/dashboard/admin">
-                <span data-feather="home"></span>
-                Data Admin
-              </a>
-            </li> -->
+
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                <span>Reports</span>
+                <a class="link-secondary" href="#" aria-label="Add a new report">
+                    {{-- <i class="fa fa-user-circle-o" aria-hidden="true"></i> --}}
+                </a>
+              </h6>
+
             <li class="ms-1 nav-item">
-              <a class="nav-link {{ Request::is('dashboard/user') ? 'active' : '' }}" aria-current="page" href="/dashboard/user">
-                <span data-feather="home"></span>
-                Data User
-              </a>
-            </li>
-
-
+              <a class="nav-link {{ Request::is('dashboard/user*') ? 'active' : '' }}" aria-current="page" href="/dashboard/user">
+                <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                Customers
+            </a>
+        </li>
+        <li class="ms-1 nav-item">
+            <a class="nav-link {{ Request::is('dashboard/product*') ? 'active' : '' }}" aria-current="page" href="/dashboard/product">
+                <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+             Product
+          </a>
+        </li>
               <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                  <span>Category & Products stock</span>
+                  <span>Other Data</span>
                   <a class="link-secondary" href="#" aria-label="Add a new report">
                     <span data-feather="plus-circle"></span>
                   </a>
                 </h6>
             <li class="ms-1 nav-item">
-              <a class="nav-link {{ Request::is('dashboard/categoryproduct') ? 'active' : '' }}" aria-current="page" href="/dashboard/categoryproduct">
-                <span data-feather="home"></span>
-                Data Category
-              </a>
-            </li>
-            <li class="ms-1 nav-item">
-              <a class="nav-link {{ Request::is('dashboard/product') ? 'active' : '' }}" aria-current="page" href="/dashboard/product">
-                <span data-feather="home"></span>
-                Data Product
+              <a class="nav-link {{ Request::is('dashboard/categoryproduct*') ? 'active' : '' }}" aria-current="page" href="/dashboard/categoryproduct">
+                <i class="fa fa-hashtag" aria-hidden="true"></i>
+                Category product
               </a>
             </li>
 
-
-              <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                  <span>Payments</span>
-                  <a class="link-secondary" href="#" aria-label="Add a new report">
-                    <span data-feather="plus-circle"></span>
-                  </a>
-                </h6>
             <li class="ms-1 nav-item">
-              <a class="nav-link {{ Request::is('dashboard/payment') ? 'active' : '' }}" aria-current="page" href="/dashboard/payment">
-                <span data-feather="home"></span>
-                Data Payment
+              <a class="nav-link {{ Request::is('dashboard/payment*') ? 'active' : '' }}" aria-current="page" href="/dashboard/payment">
+                <i class="fa fa-credit-card" aria-hidden="true"></i>
+                Payment
               </a>
             </li>
 
-              <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                  <span>Delivery</span>
-                  <a class="link-secondary" href="#" aria-label="Add a new report">
-                    <span data-feather="plus-circle"></span>
-                  </a>
-                </h6>
             <li class="ms-1 nav-item">
-              <a class="nav-link {{ Request::is('dashboard/delivery') ? 'active' : '' }}" aria-current="page" href="/dashboard/delivery">
-                <span data-feather="home"></span>
-                Data Delivery
+              <a class="nav-link {{ Request::is('dashboard/delivery*') ? 'active' : '' }}" aria-current="page" href="/dashboard/delivery">
+                <i class="fa fa-truck" aria-hidden="true"></i>
+                Delivery
               </a>
             </li>
 
@@ -112,21 +94,15 @@
                   </a>
                 </h6>
             <li class="ms-1 nav-item">
-              <a class="nav-link {{ Request::is('dashboard/c-pending') ? 'active' : '' }} " aria-current="page" href="/dashboard/c-pending">
-                <span data-feather="home"></span>
+              <a class="nav-link {{ Request::is('dashboard/c-Pending*') ? 'active' : '' }} " aria-current="page" href="/dashboard/c-Pending">
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                 Data Checkout (Pending)
               </a>
             </li>
             <li class="ms-1 nav-item">
-              <a class="nav-link" aria-current="page" href="/dashboard/delivery">
-                <span data-feather="home"></span>
-                Data Checkout (Barang Dikirim)
-              </a>
-            </li>
-            <li class="ms-1 nav-item">
-              <a class="nav-link" aria-current="page" href="/dashboard/delivery">
-                <span data-feather="home"></span>
-                Data Checkout (Barang Success Diterima)
+              <a class="nav-link {{ Request::is('dashboard/c-Success*') ? 'active' : '' }}" aria-current="page" href="/dashboard/c-Success">
+                <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                Data Checkout (Success)
               </a>
             </li>
 

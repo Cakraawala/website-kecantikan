@@ -20,7 +20,120 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Payment::create([
+        User::create([
+                'name' => 'anggercakra20',
+                'username' => 'anggercakra20',
+                'no_wa' => '081231231',
+                'email' => 'anggercakra20@gmail.com',
+                'tgl_lhr' => '2022-10-30',
+                'jk' => 'L',
+                'code_pos' => 16820,
+                'address' => 'jonggol',
+                'password' => bcrypt('angger'),
+            ]);
+        User::create([
+                'name' => 'anggercakra21',
+                'username' => 'anggercakra21',
+                'no_wa' => '081231231',
+                'email' => 'anggercakra21@gmail.com',
+                'tgl_lhr' => '2022-10-30',
+                'jk' => 'L',
+                'code_pos' => 16820,
+                'address' => 'jonggol',
+                'password' => bcrypt('angger'),
+            ]);
+        User::create([
+                'name' => 'anggercakra22',
+                'username' => 'anggercakra22',
+                'no_wa' => '081231231',
+                'email' => 'anggercakra22@gmail.com',
+                'tgl_lhr' => '2022-10-30',
+                'jk' => 'L',
+                'code_pos' => 16820,
+                'address' => 'jonggol',
+                'password' => bcrypt('angger'),
+            ]);
+        User::create([
+                'name' => 'anggercakra23',
+                'username' => 'anggercakra23',
+                'no_wa' => '081231231',
+                'email' => 'anggercakra23@gmail.com',
+                'tgl_lhr' => '2022-10-30',
+                'jk' => 'L',
+                'code_pos' => 16820,
+                'address' => 'jonggol',
+                'password' => bcrypt('angger'),
+            ]);
+        User::create([
+                'name' => 'anggercakra24',
+                'username' => 'anggercakra24',
+                'no_wa' => '081231231',
+                'email' => 'anggercakra24@gmail.com',
+                'tgl_lhr' => '2022-10-30',
+                'jk' => 'L',
+                'code_pos' => 16820,
+                'address' => 'jonggol',
+                'password' => bcrypt('angger'),
+            ]);
+        User::create([
+                'name' => 'anggercakra25',
+                'username' => 'anggercakra25',
+                'no_wa' => '081231231',
+                'email' => 'anggercakra25@gmail.com',
+                'tgl_lhr' => '2022-10-30',
+                'jk' => 'L',
+                'code_pos' => 16820,
+                'address' => 'jonggol',
+                'password' => bcrypt('angger'),
+            ]);
+        User::create([
+                'name' => 'anggercakra26',
+                'username' => 'anggercakra26',
+                'no_wa' => '081231231',
+                'email' => 'anggercakra26@gmail.com',
+                'tgl_lhr' => '2022-10-30',
+                'jk' => 'L',
+                'code_pos' => 16820,
+                'address' => 'jonggol',
+                'password' => bcrypt('angger'),
+            ]);
+        User::create([
+                'name' => 'anggercakra27',
+                'username' => 'anggercakra27',
+                'no_wa' => '081231231',
+                'email' => 'anggercakra27@gmail.com',
+                'tgl_lhr' => '2022-10-30',
+                'jk' => 'L',
+                'code_pos' => 16820,
+                'address' => 'jonggol',
+                'password' => bcrypt('angger'),
+            ]);
+        User::create([
+                'name' => 'anggercakra28',
+                'username' => 'anggercakra28',
+                'no_wa' => '081231231',
+                'email' => 'anggercakra28@gmail.com',
+                'tgl_lhr' => '2022-10-30',
+                'jk' => 'L',
+                'code_pos' => 16820,
+                'address' => 'jonggol',
+                'password' => bcrypt('angger'),
+            ]);
+
+            // User::create([
+            //     'name' => 'admin',
+            //     'username' => 'admin',
+            //     'address' => 'jakarta',
+            //     'no_wa' => 021313124,
+            //     'password' => bcrypt('admin'),
+            //     'is_admin' => 1
+            // ]);
+
+                // CategoryProduct::create([
+                //     'nm_category' => 'Skincare',
+                //     'slug' => 'skincare'
+                // ]);
+            Payment::create([
             'nm_payment' => 'BCA',
             'fee' => 5000
         ]);
@@ -57,14 +170,14 @@ class DatabaseSeeder extends Seeder
             'nm_payment' => 'SHOPEE PAY',
             'fee' => 2500
         ]);
-        Payment::create([
-            'nm_payment' => 'INDOMART',
-            'fee' => 1000
-        ]);
-        Payment::create([
-            'nm_payment' => 'ALFAMART',
-            'fee' => 1000
-        ]);
+        // Payment::create([
+        //     'nm_payment' => 'INDOMART',
+        //     'fee' => 1000
+        // ]);
+        // Payment::create([
+        //     'nm_payment' => 'ALFAMART',
+        //     'fee' => 1000
+        // ]);
         Delivery::create([
             'nm_deliver' => 'J&T EMPRESS',
             'estimasi'=> 6,
@@ -81,241 +194,7 @@ class DatabaseSeeder extends Seeder
             'ongkir' => 8000
         ]);
 
-        CategoryProduct::create([
-            'nm_category' => 'Hair',
-            'slug' => 'hair'
-        ]);
-        CategoryProduct::create([
-            'nm_category' => 'Face',
-            'slug' => 'face'
-        ]);
-        CategoryProduct::create([
-            'nm_category' => 'Tooth',
-            'slug' => 'tooth'
-        ]);
-
-        CategoryProduct::create([
-            'nm_category' => 'Body',
-            'slug' => 'body'
-        ]);
-
-        Products::create([
-            'nm_products' => 'Barang Pertama',
-            'slug' => 'barang-pertama',
-            'category_products_id' => 1,
-            'quantity' => 110,
-            'price' => 123000,
-            // 'address' => 'asdasdas',
-            'deskripsi' => 'Deskripsi Produk KUALITAS TOKO DAN PRODUK KAMI, DISINI KAMI HANYA MENERIMA KOMPLENAN YANG MELAKUKAN VIDIO UNBOXING SAJA (VIDIO BUKA PAKET)
-            '
-        ]);
-
-
-        Products::create([
-            'nm_products' => 'Barang kedua',
-            'slug' => 'barang-kedua',
-            'category_products_id' => 1,
-            'quantity' => 121,
-            'price' => 150000,
-            // 'address' => 'asdasdas',
-
-        ]);
-
-        Products::create([
-            'nm_products' => 'Barang ketiga',
-            'slug' => 'barang-ketiga',
-            'category_products_id' => 1,
-            'quantity' => 10,
-            'price' => 100000,
-            // 'address' => 'asdasdas',
-
-        ]);
-        Products::create([
-            'nm_products' => 'Barang keduabelas',
-            'slug' => 'barang-keduabelas',
-            'category_products_id' => 1,
-            'quantity' => 1,
-            'price' => 1,
-            // 'address' => 'asdasdas',
-
-        ]);
-
-        Products::create([
-            'nm_products' => 'Barang ketigabelas',
-            'slug' => 'barang-ketigabelas',
-            'category_products_id' => 1,
-            'quantity' => 1,
-            'price' => 1,
-            // 'address' => 'asdasdas',
-
-        ]);
-        Products::create([
-            'nm_products' => 'Barang keempatbelas',
-            'slug' => 'barang-keempatbelas',
-            'category_products_id' => 1,
-            'quantity' => 1,
-            'price' => 1,
-            // 'address' => 'asdasdas',
-
-        ]);
-
-        Products::create([
-            'nm_products' => 'Barang kelimabelas',
-            'slug' => 'barang-kelimabelas',
-            'category_products_id' => 1,
-            'quantity' => 1,
-            'price' => 1,
-            // 'address' => 'asdasdas',
-
-        ]);
-        Products::create([
-            'nm_products' => 'Barang keenambelas',
-            'slug' => 'barang-keenambelas',
-            'category_products_id' => 1,
-            'quantity' => 1,
-            'price' => 1,
-            // 'address' => 'asdasdas',
-
-        ]);
-
-        Products::create([
-            'nm_products' => 'Barang ketujuhbelas',
-            'slug' => 'barang-ketujuhbelas',
-            'category_products_id' => 1,
-            'quantity' => 1,
-            'price' => 1,
-            // 'address' => 'asdasdas',
-
-        ]);
-        Products::create([
-            'nm_products' => 'Barang kedelapanbelas',
-            'slug' => 'barang-kedelapanbelas',
-            'category_products_id' => 1,
-            'quantity' => 1,
-            'price' => 1,
-            // 'address' => 'asdasdas',
-
-        ]);
-
-        Products::create([
-            'nm_products' => 'Barang kesembilanbelas',
-            'slug' => 'barang-kesembilanbelas',
-            'category_products_id' => 1,
-            'quantity' => 1,
-            'price' => 1,
-            // 'address' => 'asdasdas',
-
-        ]);
-        Products::create([
-            'nm_products' => 'Barang keduapuluh',
-            'slug' => 'barang-keduapuluh',
-            'category_products_id' => 1,
-            'quantity' => 1,
-            'price' => 1,
-            // 'address' => 'asdasdas',
-
-        ]);
-
-        Products::create([
-            'nm_products' => 'Barang keduapuluhsatu',
-            'slug' => 'barang-keduapuluhsatu',
-            'category_products_id' => 1 ,
-            'quantity' => 1,
-            'price' => 1,
-            // 'address' => 'asdasdas',
-
-        ]);
-        Products::create([
-            'nm_products' => 'Barang keempat',
-            'slug' => 'barang-keempat',
-            'category_products_id' => 2,
-            'quantity' => 1,
-            'price' => 1123213,
-            // 'address' => 'asdasdas',
-
-        ]);
-
-        Products::create([
-            'nm_products' => 'Barang kelima',
-            'slug' => 'barang-kelima',
-            'category_products_id' => 1,
-            'quantity' => 1,
-            'price' => 100000000,
-            // 'address' => 'asdasdas',
-
-        ]);
-
-        Products::create([
-            'nm_products' => 'Barang keenam',
-            'slug' => 'barang-keenam',
-            'category_products_id' => 1,
-            'quantity' => 1,
-            'price' => 13333333333,
-            // 'address' => 'asdasdas',
-
-        ]);
-
-        Products::create([
-            'nm_products' => 'Barang ketujuh',
-            'slug' => 'barang-ketujuh',
-            'category_products_id' => 1,
-            'quantity' => 1,
-            'price' => 1,
-            // 'address' => 'asdasdas',
-
-        ]);
-
-        Products::create([
-            'nm_products' => 'Barang kedelapan',
-            'slug' => 'barang-kedelapan',
-            'category_products_id' => 1,
-            'quantity' => 1,
-            'price' => 1,
-            // 'address' => 'asdasdas',
-
-        ]);
-
-        Products::create([
-            'nm_products' => 'Barang kesembilan',
-            'slug' => 'barang-kesembilan',
-            'category_products_id' => 1,
-            'quantity' => 1,
-            'price' => 1,
-            // 'address' => 'asdasdas',
-
-        ]);
-
-        Products::create([
-            'nm_products' => 'Barang kesepuluh',
-            'slug' => 'barang-kesepuluh',
-            'category_products_id' => 1,
-            'quantity' => 1,
-            'price' => 1,
-            // 'address' => 'asdasdas',
-
-        ]);
-
-        Products::create([
-            'nm_products' => 'Barang kesebelas',
-            'slug' => 'barang-kesebelas',
-            'category_products_id' => 1,
-            'quantity' => 1,
-            'price' => 1,
-            // 'address' => 'asdasdas',
-
-        ]);
-
-        Products::create([
-            'nm_products' => 'Barang keduapuluhdua',
-            'slug' => 'barang-keduapuluhdua',
-            'category_products_id' => 1,
-            'quantity' => 1,
-            'price' => 1,
-            // 'address' => 'asdasdas',
-
-        ]);
-
-        User::create([
+            User::create([
             'name' => 'angger',
             'username' => 'anggercakra',
             'no_wa' => '081231231',
@@ -330,8 +209,211 @@ class DatabaseSeeder extends Seeder
         User::create([
             'name' => 'admin',
             'username' => 'admin',
+            'address' => 'jakarta',
+            'no_wa' => 021313124,
             'password' => bcrypt('admin'),
             'is_admin' => 1
         ]);
+
+
+
+        // CategoryProduct::create([
+        //     'nm_category' => 'Hair',
+        //     'slug' => 'hair'
+        // ]);
+        // CategoryProduct::create([
+        //     'nm_category' => 'Face',
+        //     'slug' => 'face'
+        // ]);
+        // CategoryProduct::create([
+        //     'nm_category' => 'Tooth',
+        //     'slug' => 'tooth'
+        // ]);
+
+        // CategoryProduct::create([
+        //     'nm_category' => 'Body',
+        //     'slug' => 'body'
+        // ]);
+        // CategoryProduct::create([
+        //     'nm_category' => 'Tech',
+        //     'slug' => 'tech'
+        // ]);
+        // CategoryProduct::create([
+        //     'nm_category' => 'AI',
+        //     'slug' => 'ai'
+        // ]);
+        // CategoryProduct::create([
+        //     'nm_category' => 'Gaming',
+        //     'slug' => 'Game'
+        // ]);
+        // CategoryProduct::create([
+        //     'nm_category' => 'Marvel',
+        //     'slug' => 'marvel'
+        // ]);
+        // CategoryProduct::create([
+        //     'nm_category' => 'Skincare',
+        //     'slug' => 'skincare'
+        // ]);
+
+        // Products::create([
+        //     'nm_products' => 'Barang Pertama',
+        //     'slug' => 'barang-pertama',
+        //     'category_products_id' => 1,
+        //     'quantity' => 110,
+        //     'price' => 123000,
+        //     // 'address' => 'asdasdas',
+        //     'deskripsi' => 'Deskripsi Produk KUALITAS'
+        // ]);
+
+
+        // Products::create([
+        //     'nm_products' => 'Barang kedua',
+        //     'slug' => 'barang-kedua',
+        //     'category_products_id' => 1,
+        //     'quantity' => 121,
+        //     'price' => 150000,
+        //     // 'address' => 'asdasdas',
+
+        // ]);
+
+        // Products::create([
+        //     'nm_products' => 'Barang keempatbelas',
+        //     'slug' => 'barang-keempatbelas',
+        //     'category_products_id' => 5,
+        //     'quantity' => 122,
+        //     'price' => 1212000,
+        //     // 'address' => 'asdasdas',
+
+        // ]);
+
+        // Products::create([
+        //     'nm_products' => 'Barang kelimabelas',
+        //     'slug' => 'barang-kelimabelas',
+        //     'category_products_id' => 3,
+        //     'quantity' => 121,
+        //     'price' => 123000,
+        //     // 'address' => 'asdasdas',
+
+        // ]);
+        // Products::create([
+        //     'nm_products' => 'Barang keenambelas',
+        //     'slug' => 'barang-keenambelas',
+        //     'category_products_id' => 2,
+        //     'quantity' => 121,
+        //     'price' => 12000,
+        //     // 'address' => 'asdasdas',
+
+        // ]);
+
+        // Products::create([
+        //     'nm_products' => 'Barang ketujuhbelas',
+        //     'slug' => 'barang-ketujuhbelas',
+        //     'category_products_id' => 1,
+        //     'quantity' => 120,
+        //     'price' => 10000,
+        //     // 'address' => 'asdasdas',
+
+        // ]);
+
+
+        // Products::create([
+        //     'nm_products' => 'Barang keduapuluhsatu',
+        //     'slug' => 'barang-keduapuluhsatu',
+        //     'category_products_id' => 5,
+        //     'quantity' => 12,
+        //     'price' => 20000,
+        //     // 'address' => 'asdasdas',
+
+        // ]);
+        // Products::create([
+        //     'nm_products' => 'Barang keempat',
+        //     'slug' => 'barang-keempat',
+        //     'category_products_id' => 2,
+        //     'quantity' => 12,
+        //     'price' => 11200,
+        //     // 'address' => 'asdasdas',
+
+        // ]);
+
+        // Products::create([
+        //     'nm_products' => 'Barang kelima',
+        //     'slug' => 'barang-kelima',
+        //     'category_products_id' => 1,
+        //     'quantity' => 10,
+        //     'price' => 1000000,
+        //     // 'address' => 'asdasdas',
+
+        // ]);
+
+        // Products::create([
+        //     'nm_products' => 'Barang keenam',
+        //     'slug' => 'barang-keenam',
+        //     'category_products_id' => 6,
+        //     'quantity' => 232,
+        //     'price' => 150000,
+        //     // 'address' => 'asdasdas',
+
+        // ]);
+
+        // Products::create([
+        //     'nm_products' => 'Barang ketujuh',
+        //     'slug' => 'barang-ketujuh',
+        //     'category_products_id' => 1,
+        //     'quantity' => 112,
+        //     'price' => 12000,
+        //     // 'address' => 'asdasdas',
+
+        // ]);
+
+        // Products::create([
+        //     'nm_products' => 'Barang kedelapan',
+        //     'slug' => 'barang-kedelapan',
+        //     'category_products_id' => 2,
+        //     'quantity' => 1203,
+        //     'price' => 100000,
+        //     // 'address' => 'asdasdas',
+
+        // ]);
+
+        // Products::create([
+        //     'nm_products' => 'Barang kesembilan',
+        //     'slug' => 'barang-kesembilan',
+        //     'category_products_id' => 1,
+        //     'quantity' => 1,
+        //     'price' => 1,
+        //     // 'address' => 'asdasdas',
+
+        // ]);
+
+        // Products::create([
+        //     'nm_products' => 'Barang kesepuluh',
+        //     'slug' => 'barang-kesepuluh',
+        //     'category_products_id' => 3,
+        //     'quantity' => 10,
+        //     'price' => 20000,
+        //     // 'address' => 'asdasdas',
+
+        // ]);
+
+        // Products::create([
+        //     'nm_products' => 'Barang kesebelas',
+        //     'slug' => 'barang-kesebelas',
+        //     'category_products_id' => 7,
+        //     'quantity' => 110,
+        //     'price' => 15000,
+        //     // 'address' => 'asdasdas',
+
+        // ]);
+
+        // Products::create([
+        //     'nm_products' => 'Barang keduapuluhdua',
+        //     'slug' => 'barang-keduapuluhdua',
+        //     'category_products_id' => 5,
+        //     'quantity' => 122,
+        //     'price' => 10000,
+        //     // 'address' => 'asdasdas',
+
+        // ]);
+
     }
 }

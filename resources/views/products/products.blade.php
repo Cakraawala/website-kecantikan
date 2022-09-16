@@ -30,20 +30,26 @@
                       {{-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" src="" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">{{ $product->nm_products }}</text></svg> --}}
 
                       <div class="card-body">
-                      <h4 class="card-text"><a style="text-decoration: none; color:#4d4949;" href="/products/{{ $product->slug }}">{{ $product->nm_products }}</a></h4>
-                      <div class="d-flex justify-content-between align-items-">
+                        <h4 class="card-text"><a style="text-decoration: none; color:#4d4949;" href="/products/{{ $product->slug }}">{{ $product->nm_products }}</a></h4>
+                        <div class="d-flex justify-content-between align-items-">
+                            <h6  style="color: red">Rp.{{ number_format($product->price) }}</h6>
+                            <h6 class="text-muted mb-3">Stock : {{ $product->quantity }}</h6>
+                        </div>
+                        <div class="card-footer">
+                            <div class="d-flex justify-content-between align-items-">
+                            <h6></h6>
+                            <div class="btn-group">
+                                <form action="/add-to-cart/{{$product->id}}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="quantity" value="1">
+                                    <button class="btn btn-sm btn-outline-success fa fa-shopping-cart" type="submit"></button>
+                                </form>
+                                {{-- <a href="{{ route('add.to.cart', $product->id) }}" class="btn btn-sm btn-outline-secondary mt-3 fa fa-shopping-cart"></a> --}}
+                            </div>
+                            </div>
+                        </div>
 
-
-                          <h6  style="color: red">Rp.{{ $product->price }}</h6>
-
-
-                        <div class="btn-group">
-                            <a href="{{ route('add.to.cart', $product->id) }}" class="btn btn-sm btn-outline-secondary mt-3 fa fa-shopping-cart"></a>
-                              {{-- <a href="{{ route('add.to.cart', $product->id) }}" class="btn btn-sm btn-outline-secondary mt-3 fa fa-shopping-cart"></a> --}}
-                      </div>
-
-                    </div>
-                </div>
+                  </div>
                 </a>
                   </div>
               </div>

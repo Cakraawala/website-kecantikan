@@ -49,7 +49,7 @@
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark -wrap flex-md-nowrap ">
         <div class="container">
             <div class="cont1atas"></div>
-            <ul class="navbar-nav flex-row flex-wrap">
+            {{-- <ul class="navbar-nav flex-row flex-wrap">
                 <li class="nav-item col-4 col-md-auto">
                     <a href="/" class="nav-link fa fa-facebook"></a>
                 </li>
@@ -62,14 +62,14 @@
                 <li class="nav-item col-4 mt-0 mb-0 ms-2 ps-1 col-md-auto">
                     <a href="/" class="nav-link px-0 fa fa-envelope"> </a>
                 </li>
-            </ul>
+            </ul> --}}
 
             <ul class="navbar-nav ms-auto flex-row flex-wrap">
-                <li class="nav-item col-4 col-md-auto mt-1">
-                    <a href="/" class="nav-link fa fa-font-awesome"></a>
-                </li>
+                {{-- <li class="nav-item col-4 col-md-auto mt-1">
+                    <a href="/" class="nav-link"></a>
+                </li> --}}
                 <li class="nav-item col-4 mt-0 col-md-auto">
-                    <a href="/" class="nav-link "> Bantuan </a>
+                    <a href="/" class="nav-link"><i class=" fa fa-font-awesome"></i>&nbsp; Bantuan </a>
                 </li>
             </ul>
             </div>
@@ -106,46 +106,11 @@
 
                          <a href="/cart" class="nav-link"><i class="fa fa-shopping-cart me-2" style="font-size:22px;color:white"></i>
                             @if (!empty($notif))
-                            <span class="badge bg-danger me-2">
+                            <span class="badge bg-danger me-2 pt-2">
                                 {{ $notif }}</span>
                             @endif
                         </a>
-                 {{-- <div class="dropdown me-3">
-                <button type="button" class="btn btn-dark" data-toggle="dropdown">
-                    <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart <span class="badge badge-pill badge-danger">{{ count((array) session('cart')) }}</span>
-                </button>
-                <div class="dropdown-menu">
-                    <div class="row total-header-section">
-                        <div class="col-lg-6 col-sm-6 col-6">
-                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> <span class="badge badge-pill badge-danger">{{ count((array) session('cart')) }}</span>
-                        </div>
-                        @php $total = 0 @endphp
-                        @foreach((array) session('cart') as $id => $details)
-                            @php $total += $details['price'] * $details['quantity'] @endphp
-                        @endforeach
-                        <div class="col-lg-6 col-sm-6 col-6 total-section text-right">
-                            <p>Total: <span class="text-info">Rp. {{ number_format($total) }}</span></p>
-                        </div>
-                    </div>
-                    @if(session('cart'))
-                        @foreach(session('cart') as $id => $details)
-                            <div class="row cart-detail">
-                                <div class="col-lg-4 col-sm-4 col-4 cart-detail-img">
-                                    <img src="{{ $details['image'] }}" />
-                                </div>
-                                <div class="col-lg-8 col-sm-8 col-8 cart-detail-product">
-                                    <p>{{ $details['nm_products'] }}</p>
-                                    <span class="price text-info"> Rp.{{ number_format($details['price']) }}</span> <span class="count"> Quantity:{{ number_format($details['quantity']) }}</span>
-                                </div>
-                            </div>
-                        @endforeach
-                    @endif
-                    <div class="row">
-                        <div class="col-lg-12 col-sm-12 col-12 text-center checkout">
-                            <a href="{{ route('cart') }}" class="btn btn-primary btn-block">View all</a>
-                        </div>
-                    </div>
-                </div> --}}
+
 
                         </li>
 
@@ -157,24 +122,21 @@
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 @can('admin')
                             <li><a class="dropdown-item" href="/dashboard">
-                                <i class="bi bi-layout-text-window-reverse">
-                                    </i> My Dashboard</a></li>
+                                <i class="fa fa-desktop" aria-hidden="true"></i>&nbsp; My Dashboard</a></li>
                             <li><hr class="dropdown-divider"></li>
                                 @endcan
                             <li><a class="dropdown-item" href="/my-account">
-                                <i class="bi bi-layout-text-window-reverse">
-                                    </i> My account</a></li>
+                                <i class="fa fa-id-card-o" aria-hidden="true"></i> &nbsp;My account</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="/user/order">
-                                <i class="bi bi-layout-text-window-reverse">
-                                    </i> My Order</a></li>
+                            <li><a class="dropdown-item" href="/history">
+                                <i class="fa fa-shopping-bag" aria-hidden="true"></i>&nbsp; My Order</a></li>
                             <li><hr class="dropdown-divider"></li>
 
                             <li>
                                 <form action="/logout" method="post">
                                     @csrf
                                     <button type="submit" class="dropdown-item">
-                                        <i class="bi bi-box-arrow-left"> </i> Logout
+                                        <i class="fa fa-sign-out" aria-hidden="true"></i> Logout
                                     </button>
                                 </form>
                             </li>
@@ -186,16 +148,11 @@
                              <a href="/cart" class="nav-link"><i class="fa fa-shopping-cart me-2" style="font-size:22px;color:white"></i>
 
                             </a>
-                             <!--     <a href="/cart"> <i class="fa fa-shopping-cart nav-link px-2 me-2" style="font-size:24px;color:white"></i> </a> -->
-                 {{-- <div class="dropdown me-3">
-                <button type="button" class="btn btn-dark" data-toggle="dropdown">
-                    <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart <span class="badge badge-pill badge-danger"></span>
-                </button> --}}
+
                 <div class="dropdown-menu">
                     <div class="row total-header-section">
                         <div class="col-lg-6 col-sm-6 col-6">
-                            {{-- <i class="fa fa-shopping-cart" aria-hidden="true"> Login First! </i> <span class="badge badge-pill badge-danger"></span> --}}
-                        </div>
+                    </div>
                 </div>
                 </div>
                         </li>

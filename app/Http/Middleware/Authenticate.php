@@ -17,7 +17,8 @@ class Authenticate extends Middleware
     {
         if (!$request->expectsJson()) {
             // Alert::success('success','success');
-            return redirect()->route('login');
+            return route('login');
+            // return redirect()->route('login')->with('asking', 'tes');
             // return redirect('/login')->with('asking','Login dlu');
         }
     }

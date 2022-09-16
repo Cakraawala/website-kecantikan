@@ -15,9 +15,11 @@ class RegisterController extends Controller
         $validated = $request->validate([
             'name' => 'required|max:255',
             'username' => ['required', 'min:3', 'max:255', 'unique:users'],
-            'password' => ['required', 'min:3', 'max:255'],
-            'confirmation_password' => ['required,same:password']
+            'password' => ['min:3', 'max:255','required'],
+            'confirmation_password' => ['required','same:password','min:3', 'max:255']
         ]);
+
+        // dd($validated);
 
         $validated['password'] = bcrypt($validated['password']);
 

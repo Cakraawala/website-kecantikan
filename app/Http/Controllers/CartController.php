@@ -18,17 +18,6 @@ use Illuminate\Support\Str;
 class CartController extends Controller
 {
 
-    // public function index(Request $request){
-    //     $itemuser = $request->user();//ambil data user
-    //     $itemcart = Cart::where('users_id', $itemuser->id)
-    //                     ->where('status', 'cart')
-    //                     ->first();
-    //     $data = array('title' => 'Shopping Cart',
-    //                 'itemcart' => $itemcart);
-    //     return view('cart.cart', $data)->with('no', 1);
-
-    // }
-
    public function cart()
     {
         if(!Auth::check()){
@@ -49,6 +38,9 @@ class CartController extends Controller
     }
 
     public function checkout(){
+        if(!Auth::check()){
+            return redirect('/login')->with('asking', 'Please login first!');
+        }
         $checkout = Cart::where('users_id', Auth::user()->id)->where('status', 'cart')->first();
         $title = 'Checkout';
         $user = User::where('id', Auth::user()->id)->first();
@@ -65,30 +57,30 @@ class CartController extends Controller
 
 
     public function addToCart(Request $request, $id){
+        if(!Auth::check()){
+            return redirect('/login')->with('asking', 'Please login first!');
+        }
        $product = Products::where('id', $id)->first();
-       $tgl = Carbon::now();
+
 
        //validasi stok
        if($request->quantity > $product->quantity){
-        return back()->with('error', 'Jumlah melebihi stock yang ada!');
+        Alert::error('Error', 'Jumlah melebihi stock product!');
+        return back();
        }
 
-       if(empty($request->quantity)){
-        $request->quantity = 1;
+       if($request->quantity == 0){
+        Alert::error('Error','Tidak bisa menambah product kosong');
+        return back();
        }
-        //cek cart lagi
-        // post ke db
        $cek_checkout = Cart::where('users_id', Auth::user()->id)->where('status', 'cart')->first();
        if(empty($cek_checkout)){
         $checkout = new Cart;
         $checkout->users_id = Auth::user()->id;
-        $no_invoice = Cart::where('users_id', $checkout->users_id)->count();
-         $checkout->tgl = $tgl;
          $checkout->status = 'cart';
-         $checkout->no_resi = Str::random(5). $checkout->tgl.str_pad(($no_invoice + 1), '3', '0', STR_PAD_LEFT);
          $checkout->subtotal = 0;
-         $checkout->status_pembayaran = 0;
-        //  $checkout->total = 0;
+
+
          $checkout->save();
        }
         // simpan ke db detail
@@ -127,17 +119,33 @@ class CartController extends Controller
     public function update(Request $request)
     {
 
-        if($request->id && $request->quantity){
-            $cart = Cart::where('users_id', Auth::user()->id)->where('status', 'cart')->first()->get();
-            $cart_detail = CartDetail::where('carts_id', $request->id);
-            $cart_detail[$request->cart_details_id]["quantity"] = $request->quantity;
-            $cart->put('cart', $cart);
-            return back()->flash('success', 'Cart updated successfully');
+        if(!Auth::check()){
+            return redirect('/login')->with('asking', 'Please login first!');
         }
+        $cart_detail = CartDetail::where('id', $request->id)->first();
+        $product = $cart_detail->products;
+        // dd($product);
+        if($request->quantity > $product->quantity){
+            Alert::error('Error!', 'Jumlah melebihi stock product!');
+            Return back();
+        }
+        $cart_detail->quantity = $request->quantity;
+        $cart_detail->subtotal = $cart_detail->quantity * $cart_detail->products->price;
+        $cart_detail->update();
+        $cart = Cart::where('users_id', Auth::user()->id)->where('status', 'cart')->first();
+        $detail = CartDetail::where('carts_id', $cart->id)->get();
+        $temp = 0;
+        foreach($detail as $cd){
+            $temp += $cd->subtotal;
+        }
+        $cart->subtotal = $temp;
+        $cart->update();
+        return back();
+
     }
 
     public function confirm(Request $request){
-        // dd($request);
+
         $user = User::where('id', Auth::user()->id)->first();
         if(empty($user->address)){
             Alert::error('Error', 'Your address was empty!');
@@ -150,22 +158,22 @@ class CartController extends Controller
         $cart = Cart::where('users_id', Auth::user()->id)->where('status', 'cart')->first();
 
         $checkout = new Checkout();
+        $tgl = Carbon::now();
         $checkout->users_id = Auth::user()->id;
         $no_invoice = Cart::where('users_id', $checkout->users_id)->count();
         $checkout->carts_id = $cart->id;
         $checkout->payments_id = $request->payments_id;
         $checkout->deliveries_id = $request->deliveries_id;
         $checkout->total_products = $cart->subtotal;
+        $checkout->tgl = $tgl;
         $checkout->total_delivery = Delivery::where('id', $checkout->deliveries_id)->first()->ongkir;
         $checkout->total_fee = Payment::where('id', $checkout->payments_id)->first()->fee;
         $checkout->subtotal = $checkout->total_fee + $checkout->total_products + $checkout->total_delivery;
-        $checkout->no_resi = Str::random(5).str_pad(($no_invoice + 1), '3', '0', STR_PAD_LEFT);
-        $checkout->status = 'pending';
+        $checkout->no_resi = mt_rand(10000,999999999).str_pad(($no_invoice + 1), '3', '0', STR_PAD_LEFT);
+        $checkout->status = 'Pending';
         $checkout->save();
         $cart_id = $cart->id;
-        // $cart->status = 'Pending';
-        // $cart->payments_id = $request->payments_id;
-        // $cart->update();
+
 
         $cart_detail = CartDetail::where('carts_id', $cart_id)->get();
         foreach($cart_detail as $cd){
@@ -173,9 +181,10 @@ class CartController extends Controller
             $product->quantity = $product->quantity- $cd->quantity;
             $product->update();
         }
-        $cart->delete();
+        $cart->status = 'checkout';
+        $cart->update();
         Alert::success('Success', 'Checkout Success');
-        return redirect('/');
+        return redirect('/history/'. $cart_id);
     }
 
 
@@ -186,6 +195,9 @@ class CartController extends Controller
      */
     public function remove(Request $request)
     {
+        if(!Auth::check()){
+            return redirect('/login')->with('asking', 'Please login first!');
+        }
         $checkout = Cart::where('users_id', Auth::user()->id)->where('status', 'cart')->first();
         $checkout_detail = CartDetail::where('carts_id', $checkout->id)->get();
         if($request->checkout_detail->id) {
@@ -199,7 +211,10 @@ class CartController extends Controller
     }
 
     public function delete($id){
-        // Alert::question('Question Title', 'Question Message');
+
+        if(!Auth::check()){
+            return redirect('/login')->with('asking', 'Please login first!');
+        }
         $checkout_detail = CartDetail::where('id', $id)->first();
         $checkout = Cart::where('id', $checkout_detail->carts_id)->first();
         $checkout->subtotal = $checkout->subtotal-$checkout_detail->subtotal;

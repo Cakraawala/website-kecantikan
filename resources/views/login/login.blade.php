@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Animated Login Form</title>
+	<title>Cakra | Login</title>
 	<link rel="stylesheet" type="text/css" href="/loginn/css/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
 	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
@@ -47,7 +47,7 @@
            		   		<i class="fas fa-user"></i>
            		   </div>
            		   <div class="div">
-           		   		<input type="username" name="username" id="username" required autofocus value="{{ old('username') }}"class="input" placeholder="Username">
+           		   		<input type="username" name="username" id="username" required autofocus @if(Cookie::has('username')) value="{{ Cookie::get('username') }}" @endif class="input" placeholder="Username">
            		   </div>
            		</div>
            		<div class="input-div pass">
@@ -55,9 +55,13 @@
            		    	<i class="fas fa-lock"></i>
            		   </div>
            		   <div class="div">
-           		    	<input type="password" name="password" id="password" required class="input" placeholder="Password">
+           		    	<input type="password" name="password" id="password" required class="input" placeholder="Password" @if(Cookie::has('password')) value="{{ Cookie::get('password') }}" @endif>
             	   </div>
             	</div>
+                <div class="form-group text-end">
+                    <label for="remember"> Remember me</label>
+                    <input type="checkbox" @if(Cookie::has('username')) checked @endif   name="remember" value="1">
+                </div>
             	<a href="/register" class="nav-link">Register?</a>
             	<input type="submit" class="btn" value="login">
             </form>
@@ -65,5 +69,6 @@
     </div>
     <script type="text/javascript" src="/loginn/js/main.js"></script>
     <script src="/js/bootstrap.bundle.min.js"></script>
+    @include('sweetalert::alert')
 </body>
 </html>
