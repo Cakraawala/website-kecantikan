@@ -40,9 +40,9 @@
             <table class="table table-bordered table-hover table-striped table-lg mb-5" id="myTable">
             <thead>
               <tr>
-                <th scope="col" width="5%">Id</th>
-                <th scope="col" width="20%">Image</th>
-                <th scope="col" width="20%">Name Product</th>
+                <th scope="col" width="3%">No</th>
+                <th scope="col" width="15%">Image</th>
+                <th scope="col" width="25%">Name Product</th>
                 <th scope="col" width="10%">Category</th>
                 <th scope="col" width="10%">&nbsp; Stock</th>
                 {{-- <td width="4%"></td> --}}
@@ -54,7 +54,7 @@
             <tbody>
                 @foreach ($products as $product)
                 <tr>
-                  <td> {{ $product->id }}</td>
+                  <td> {{ $loop->iteration }}</td>
                   <td>
                       @if ($product->image)
                       <a href="" data-bs-toggle="modal" data-bs-target="#modal{{ $loop->iteration }}">
@@ -79,7 +79,7 @@
                    @endif
                   <td>{{ $product->nm_products ?? '-' }}</td>
                 </td>
-                  <td><a style="color:black;text-decoration:none;" href="/dashboard/categoryproduct/{{ $product->CategoryProduct->id }}/show">{{  $product->CategoryProduct->nm_category ?? '-' }}({{  $product->category_products_id ?? '-' }})</a> </td>
+                  <td><a style="color:black;text-decoration:none;" href="/dashboard/categoryproduct/{{ $product->CategoryProduct->id }}/show">{{  $product->CategoryProduct->nm_category ?? '-' }}</a> </td>
                   <td>
                     <form action="{{ route('update.quantity') }}" method="post">
                     @csrf

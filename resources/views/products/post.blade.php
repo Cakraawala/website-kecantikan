@@ -22,8 +22,9 @@
                         <div class="col-md-6">
                             @if ($product->image)
                             <a href="{{asset('storage/' . $product->image)}}">
-                            <img src="{{asset('storage/' . $product->image)}}"
-                            class="bd-placeholder-img card-img-top" alt="{{ $product->CategoryProduct->nm_category }}" width="250" height="400">
+                                <img class="bd-placeholder-img overflow-hidden bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src="{{ asset('storage/'. $product->image) }}" alt="{{ $product->CategoryProduct->nm_category }}">
+                            {{-- <img src="{{asset('storage/' . $product->image)}}"
+                            class="bd-placeholder-img card-img-top" alt="{{ $product->CategoryProduct->nm_category }}" width="400" height="400"> --}}
                         </a>
                                 @else
                                 <img src="https://source.unsplash.com/700x400?{{ $product->CategoryProduct->nm_category }}"

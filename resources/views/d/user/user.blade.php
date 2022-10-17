@@ -40,12 +40,10 @@
                 <th scope="col">Id</th>
                 <th scope="col">Name</th>
                 <th scope="col">Username</th>
-                <th scope="col">Email</th>
+                <th scope="col" width="10%">Email</th>
                 <th scope="col">Nomer</th>
-                {{-- <th scope="col">Tanggal lahir</th> --}}
-                <th scope="col">Jenis Kelamin</th>
-                <th scope="col">Kode Pos</th>
-                <th scope="col">Address</th>
+                <th scope="col">JK</th>
+                <th scope="col" width ="20%">Address</th>
                 <th scope="col">Info</th>
               </tr>
             </thead>
@@ -57,15 +55,14 @@
                   <td>{{ $user->username ?? '-' }}</td>
                   <td> {{ $user->email ?? '-' }}</td>
                   <td>{{ $user->no_wa ?? '-' }}</td>
-                  {{-- <td>{{ $user->tgl_lhr }}</td> --}}
+
                   <td>
                     @if ($user->jk == 'L')
                         Pria
                         @elseif ($user->jk == 'P')
                         Wanita
                     @endif</td>
-                  <td>{{ $user->code_pos ??'-' }}</td>
-                  <td>{{ $user->address ?? '-' }}</td>
+                  <td>{{ $user->address ?? '-' }} ({{ $user->code_pos }})</td>
 
                   <td>
                     <form action="/dashboard/user/{{ $user->id }}/edit" class="d-inline">

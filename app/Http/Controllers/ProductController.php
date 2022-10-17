@@ -46,14 +46,14 @@ class ProductController extends Controller
         if(auth()->user()->is_admin == 0){
             abort(404);
         }
-        $products = Products::with('CategoryProduct');
+        $products = Products::with('CategoryProduct')->orderby('id', 'desc')->get();
 
         if(request('search')){
             $products->where('nm_products', 'like', '%'. request('search') . '%' )
             ->orWhere('price', 'like', '%' . request('search'))->orWhere('id', 'like' , '%' . request('search'));
         }
-
-        return view('d.products.index', ['products' => $products->get(), 'title' => 'Product']);
+// dd($products);
+        return view('d.products.index', ['products' => $products, 'title' => 'Product']);
     }
 
     public function create(Request $request)

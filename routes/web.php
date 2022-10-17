@@ -88,11 +88,13 @@ Route::get('/history/{id}/kirim-bukti', [HistoryController::class,'bukti']);
 Route::post('/history/{id}/kirim-bukti', [HistoryController::class,'kirimbukti']);
 
 Route::get('/categories', function(CategoryProduct $category){
-    return view('products.categories', [
-                'title' => 'All Categories',
-                'category' => $category->nm_category,
-                'categoryproduct' => $category->all()
-            ]);
+    // dd($category);
+    // return view('products.categories', [
+    //             'title' => 'All Categories',
+    //             'category' => $category->nm_category,
+    //             'categoryproduct' => $category->all()
+    //         ]);
+    return redirect('/');
 });
 
 Route::get('/categories/{category:slug}', [CategoryProductController::class,'index']);
@@ -117,11 +119,12 @@ Route::post('/my-account/update', [MyAccountController::class, 'update'])->middl
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
-Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth');
+Route::any('/logout', [LoginController::class, 'logout'])->middleware('auth');
 
 Route::get('/register', [RegisterController::class, 'index'])->name('register')->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
 
 Route::get('/history', [HistoryController::class,'index']);
+
 
 

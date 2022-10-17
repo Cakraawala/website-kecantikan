@@ -8,7 +8,7 @@
     </div>
 
     <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-        <li class="nav-item ms-1 col-4 col-md-auto">
+        {{-- <li class="nav-item ms-1 col-4 col-md-auto">
             <a href="/" class="nav-link fa fa-facebook"></a>
         </li>
         <li class="nav-item col-4 mt-0 col-md-auto">
@@ -19,6 +19,6 @@
         </li>
         <li class="nav-item ms-2 col-4 mt-0 mb-0 ms-2 ps-1 col-md-auto">
             <a href="/" class="nav-link px-0 fa fa-envelope"> </a>
-        </li>
+        </li> --}}
     </ul>
   </footer>

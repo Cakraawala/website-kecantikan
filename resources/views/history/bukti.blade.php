@@ -18,7 +18,7 @@
                             @csrf
                         {{-- <input type="hidden" name="id" value="{{$checkout->id}}"> --}}
                         <label for="image" class="form-label"> Upload Bukti &nbsp; (<i>max 3 Mb)</i></label>
-                        <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image">
+                        <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image" required>
                         @error('image')
                         <div class="invalid-feedback">
                             {{$message}}

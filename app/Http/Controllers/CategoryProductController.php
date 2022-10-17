@@ -10,11 +10,10 @@ use Illuminate\Support\Str;
 class CategoryProductController extends Controller
 {
     public function index(CategoryProduct $category){
-        // $category = CategoryProduct::with('products')->orderBy('id', 'asc');
-        return view('products.category', [
-            'title' => $category->nm_category,
-            'products' => $category->products
-        ]);
+        $products = Products::where('category_products_id', $category->id)->inRandomOrder()->get();
+        $title = $category->nm_category;
+        // dd($products);
+        return view('products.category', compact('title','products'));
     }
 
     public function dashboardindex(){
@@ -24,7 +23,7 @@ class CategoryProductController extends Controller
         if(auth()->user()->is_admin == 0){
             abort(404);
         }
-        $categoryproduct = CategoryProduct::with('products')->orderBy('id', 'asc');
+        $categoryproduct = CategoryProduct::with('products')->orderBy('id', 'desc');
         if(request('search')){
             $categoryproduct->where('nm_category', 'like', '%'. request('search') . '%' )
             ->orWhere('id', 'like', '%' . request('search'));

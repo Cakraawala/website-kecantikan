@@ -18,7 +18,7 @@
 
         <ul class="navbar-nav ms-auto flex-row flex-wrap">
             <li class="nav-item col-4 col-md-auto mt-1">
-                <a href="/" class="nav-link fa fa-font-awesome"></a>
+                <a href="/" class="nav-link fa fa-home"></a>
             </li>
             <li class="nav-item col-4 mt-0 col-md-auto">
                 <a href="/" class="nav-link "> Bantuan </a>
@@ -68,8 +68,12 @@
                 {{-- <li class="nav-item col-4 col-md-auto mt-1">
                     <a href="/" class="nav-link"></a>
                 </li> --}}
+              
                 <li class="nav-item col-4 mt-0 col-md-auto">
-                    <a href="/" class="nav-link"><i class=" fa fa-font-awesome"></i>&nbsp; Bantuan </a>
+                    <a href="/" class="nav-link"><i class="fa fa-home"></i></a>
+                </li>
+                <li class="nav-item col-4 mt-0 col-md-auto">
+                    <a href="/my-account" class="nav-link"><i class="fa fa-cog"></i></a>
                 </li>
             </ul>
             </div>

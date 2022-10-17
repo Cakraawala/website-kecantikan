@@ -39,7 +39,7 @@
                                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <img src="{{asset('storage/' . $category->image)}}" style="width: 100%">
+                                        <img src="{{asset('storage/' . $category->image)}}" style="width: 100%;max-height:500px">
                                     </div>
                                     <div class="modal-footer">
                                   </div>
@@ -82,7 +82,7 @@
                                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <img src="{{asset('storage/' . $p->image)}}" style="width: 100%">
+                                        <img src="{{asset('storage/' . $p->image)}}" style="width: 100%;max-height:500px">
                                     </div>
                                     <div class="modal-footer">
                                   </div>

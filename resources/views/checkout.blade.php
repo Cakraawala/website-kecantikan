@@ -23,8 +23,8 @@
                             <table class="table table-borderless">
                                 <tbody>
                                     <tr>
-                                        <td width= "20%"> <h6><strong>{{ $user->name}} {{ $user->no_wa }}</>  </h6></td>
-                                        <td width="70%"><h6> {{ $user->address }}</h6></td>
+                                        <td width= "20%"> <h6><strong>{{ $user->name}} +62{{ $user->no_wa }}</>  </h6></td>
+                                        <td width="70%"><h6> {{ $user->address }}, {{$user->code_pos}} </h6></td>
                                         <td><a href="/my-account/edit" style="text-decoration: none">Ubah</a></td>
                                     </tr>
                                 </tbody>

@@ -14,7 +14,7 @@
         <div class="container-atasas" style="margin-top: 100px;">
             @if (session()->has('success'))
 
-            <div class="alert alert-success alert-dismissible fade show" style="z-index: 1000" role="alert"> {{session('success')}}
+            <div class="alert alert-success alert-dismissible fade show" style="z-index: 1000" role="alert" width="50px"> {{session('success')}}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
             </div>
 
@@ -249,18 +249,16 @@
 
                             @if ($product->image)
                             <img src="{{asset('storage/' . $product->image)}}"
-                            class="bd-placeholder-img card-img-top" alt="{{ $product->nm_products }}" width="214" height=225">
+                            class="bd-placeholder-img card-img-top" alt="{{ $product->nm_products }}" width="300" height=300">
                                 @else
                                 <img src="https://source.unsplash.com/700x400?{{ $product->nm_products }}"
                                 class="bd-placeholder-img card-img-top" alt="{{ $product->nm_products }}" width="214" height="225">
                             @endif
 
-
-
                           {{-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" src="" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">{{ $product->nm_products }}</text></svg> --}}
 
-                          <div class="card-body">
-                            <h4 class="card-text"><a style="text-decoration: none; color:#4d4949;" href="/products/{{ $product->slug }}">{{ $product->nm_products }}</a></h4>
+                          <div class="card-body" >
+                            <h4 class="card-text" style="height: 52px"><a style="text-decoration: none; color:#4d4949;" href="/products/{{ $product->slug }}">{{ $product->nm_products }}</a></h4>
                             <div class="d-flex justify-content-between align-items-">
                                 <h6  style="color: red">Rp.{{ number_format($product->price) }}</h6>
                                 <h6 class="text-muted mb-3">Stock : {{ $product->quantity }}</h6>
@@ -287,7 +285,7 @@
                 </div>
                 <div class="d-flex justify-content-center mt-5 mb-5">
                   {{-- {{ $products->links() }} --}}
-                  <h4> <a href="/products" class="nav-link"> See list</a>
+                  <h4> <a href="/products" class="nav-link"> See other products</a>
                   </h4> </div>
             </div>
               </div>

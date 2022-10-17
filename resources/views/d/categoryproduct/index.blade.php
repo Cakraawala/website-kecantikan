@@ -39,7 +39,7 @@
               <table class="table table-bordered table-striped table-lg mb-4" id="myTable">
             <thead>
               <tr>
-                <th scope="col" width="5%">Id</th>
+                <th scope="col" width="5%">No</th>
                 <th scope="col" width="20%"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;Image</th>
                 <th scope="col" width="15%">Name Category</th>
                 <th scope="col" width="30%">Description</th>
@@ -50,7 +50,7 @@
             <tbody>
                 @foreach ($categoryproduct as $cp)
                 <tr>
-                  <td>{{ $cp->id }}</td>
+                  <td>{{ $loop->iteration }}</td>
                   <td> @if ($cp->image)
                     <a href="" data-bs-toggle="modal" data-bs-target="#modal{{ $loop->iteration }}"><img src="{{asset('storage/' . $cp->image)}}" style="max-width: 100px;max-height:100px"></a>
                   </td>
