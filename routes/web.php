@@ -16,7 +16,9 @@ use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\MyAccountController;
 use App\Http\Controllers\StatusController;
+use App\Http\Controllers\StatusProductController;
 use App\Models\Products;
+use App\Models\StatusProduct;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -125,6 +127,8 @@ Route::get('/register', [RegisterController::class, 'index'])->name('register')-
 Route::post('/register', [RegisterController::class, 'store']);
 
 Route::get('/history', [HistoryController::class,'index']);
-
+Route::get('/dashboard/history-barang-status', [StatusProductController::class, 'index']);
+Route::get('/dashboard/history-barang-status/all', [StatusProductController::class, 'all']);
+Route::get('/dashboard/reports', [IndexController::class, 'report']);
 
 

@@ -8,6 +8,7 @@ use App\Models\CartDetail;
 use App\Models\Checkout;
 use App\Models\Delivery;
 use App\Models\Payment;
+use App\Models\StatusProduct;
 use App\Models\User;
 use Carbon\Carbon;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -173,11 +174,18 @@ class CartController extends Controller
         $checkout->status = 'Pending';
         $checkout->save();
         $cart_id = $cart->id;
-
-
+        $status = new StatusProduct;
+        $status->waktu = Carbon::now();
+        $status->status = "Keluar";
+        $status->users_id = Auth::user()->id;
         $cart_detail = CartDetail::where('carts_id', $cart_id)->get();
         foreach($cart_detail as $cd){
             $product = Products::where('id', $cd->products_id)->first();
+            $status->products_id = $product->id;
+            $status->jumlah = $cd->quantity;
+            $status->desc = "Checkout";
+            $status->save();
+            // dd($status->products_id);
             $product->quantity = $product->quantity- $cd->quantity;
             $product->update();
         }
@@ -187,12 +195,6 @@ class CartController extends Controller
         return redirect('/history/'. $cart_id);
     }
 
-
-    /**
-     * Write code on Method
-     *
-     * @return response()
-     */
     public function remove(Request $request)
     {
         if(!Auth::check()){

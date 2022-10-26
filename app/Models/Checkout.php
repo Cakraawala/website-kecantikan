@@ -23,4 +23,6 @@ class Checkout extends Model
     public function deliveries(){
         return $this->belongsTo(Delivery::class, 'deliveries_id');
     }
+
+    protected $dates = ['created_at'];
 }

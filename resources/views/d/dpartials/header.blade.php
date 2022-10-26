@@ -29,20 +29,38 @@
 
   <div class="container-fluid">
     <div class="row">
-      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+      <nav id="sidebarMenu" class="sidebarMenu col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
         <div class="position-sticky pt-3">
           <ul class="nav flex-column">
 
 
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                <span>Reports</span>
+                <a class="link-secondary" href="#" aria-label="Add a new report">
+                    {{-- <i class="fa fa-user-circle-o" aria-hidden="true"></i> --}}
+                </a>
+              </h6>
             <li class="ms-1 nav-item">
-              <a class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}" aria-current="page" href="/dashboard">
+                <a href="/dashboard" class="nav-link {{ Request::is('dashboard') ? 'active' : ''}}" aria-current="page">
                 <i class="fa fa-home" aria-hidden="true"></i>
                 Dashboard
               </a>
             </li>
+            <li class="ms-1 nav-item">
+                <a href="/dashboard/history-barang-status" class="nav-link {{ Request::is('dashboard/history-barang-status*') ? 'active' : ''}}" aria-current="page">
+                    <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                     Status Barang
+              </a>
+            </li>
+            <li class="ms-1 nav-item">
+                <a href="/dashboard/reports" class="nav-link {{ Request::is('dashboard/reports*') ? 'active' : ''}}" aria-current="page">
+                    <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                     Income Reports
+              </a>
+            </li>
 
             <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                <span>Reports</span>
+                <span>Product and User</span>
                 <a class="link-secondary" href="#" aria-label="Add a new report">
                     {{-- <i class="fa fa-user-circle-o" aria-hidden="true"></i> --}}
                 </a>

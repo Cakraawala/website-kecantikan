@@ -13,10 +13,10 @@
         @yield('title')
     </head>
     <body>
-        <header>
+        <header class="heder">
             @include('d.dpartials.header')</header>
-        <div class="contanisse" style="margin-top: 50px;margin-bottom:70px">
-            @yield('content')</div>
+        <div class="contanisse" style="margin-bottom:50px"></div>
+            @yield('content')
         <script src="/js/bootstrap.bundle.min.js"></script>
         <script src="/checkout/form-validation.js"></script>
     </body>

@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 use App\Models\CategoryProduct;
 use App\Models\Products;
+use App\Models\StatusProduct;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use Carbon\Carbon;
 
 class ProductController extends Controller
 {
@@ -124,9 +126,36 @@ class ProductController extends Controller
     }
 
     public function updatequantity(Request $request){
+        $status = new StatusProduct;
+        // dd($status);
+        $status->users_id = Auth::user()->id;
         $product = Products::where('id',$request->id)->first();
-        $product->quantity = $request->quantity;
-        $product->update();
+        $p = $request->id;
+        $status->products_id = $p;
+        $waktu = Carbon::now();
+        $status->waktu = $waktu;
+        // dd($waktu);
+        // dd($status->waktu->diffForHumans());
+        $sblm = $product->quantity;
+        if($request->quantity > $sblm){
+            $status->status = "Masuk";
+            $ssdh = $product->quantity = $request->quantity;
+            $status->jumlah = $ssdh - $sblm;
+            $status->desc = "Update";
+            $status->save();
+            $product->update();
+            // dd($status->waktu->diffForHumans());
+        }
+        elseif($request->quantity < $sblm){
+            $status->status = "Barang keluar";
+            $ssdh = $product->quantity = $request->quantity;
+            $status->jumlah = $sblm - $ssdh;
+            $status->save();
+            $product->update();
+        }
+        else{
+            return back();
+        }
         return back()->with('success', 'Stock berhasil di update');
     }
 

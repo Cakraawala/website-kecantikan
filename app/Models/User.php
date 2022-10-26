@@ -31,6 +31,9 @@ class User extends Authenticatable
     public function checkouts(){
         return $this->hasMany(Checkout::class);
     }
+    public function status(){
+        return $this->hasMany(StatusProduct::class);
+    }
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -48,5 +51,9 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'created_at' => 'datetime:d-m-Y',
+        'updated_at' => 'datetime:d-m-Y',
+        'deleted_at' => 'datetime:d-m-Y h:i:s',
+        'waktu' => 'datetime:d-m-Y'
     ];
 }
