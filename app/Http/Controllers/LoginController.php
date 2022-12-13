@@ -26,9 +26,11 @@ class LoginController extends Controller
                 Cookie::queue('password', $request->password, $minutes);}
             // dd($tes);
             return redirect()->intended('/')->with('success','Login anda berhasil, Welcome back');
-            Alert::success('Success', 'Login berhasil');}
+            Alert::success('Success', 'Login berhasil');
+        }
 
-        return back()->with('loginError', 'Login Failed!');}
+        return back()->with('loginError', 'Login Failed!');
+    }
 
     public function logout(){
         Auth::logout();

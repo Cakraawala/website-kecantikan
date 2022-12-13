@@ -102,7 +102,7 @@
 
                 <hr class="featurette-divider">
 
-                {{-- <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-indicators">
 
                       @php
@@ -168,7 +168,7 @@
                       <span class="carousel-control-next-icon" aria-hidden="true"></span>
                       <span class="visually-hidden">Next</span>
                     </button>
-                  </div> --}}
+                  </div>
 
 
 

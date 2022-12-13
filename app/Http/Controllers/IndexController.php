@@ -82,7 +82,6 @@ class IndexController extends Controller
             }
             $income[$month] = $count_income;
         }
-
         return view('d.report', compact('title', 'months', 'count','income'));
     }
 }
