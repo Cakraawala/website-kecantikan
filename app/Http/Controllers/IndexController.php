@@ -19,7 +19,7 @@ class IndexController extends Controller
     public function index()
     {
         $title = 'No.1 Beauty online shop';
-        $categories = CategoryProduct::all();
+        $categories = CategoryProduct::limit(12)->get();
         $products = Products::inRandomOrder()->paginate('9')->withQueryString();
         $cts = CategoryProduct::where('id', 1)->first();
         $pts1 = Products::orderBy('id', 'asc')->first();
@@ -52,6 +52,12 @@ class IndexController extends Controller
 
     public function report()
     {
+        if (auth()->guest()) {
+            return redirect('/');
+        }
+        if (auth()->user()->is_admin == 0) {
+            abort(404);
+        }
         $title = "Monthly Report";
         $chart1 = StatusProduct::where('status', 'Keluar')->where('desc', 'Checkout')->orderBy('id', 'asc')->get()->groupby(function ($chart1) {
             return Carbon::parse($chart1->waktu)->format('M');
@@ -69,7 +75,7 @@ class IndexController extends Controller
         foreach ($chart1 as $month => $value) {
             $months[] = $month;
             $p = 0;
-            foreach($value as $sp){
+            foreach ($value as $sp) {
                 $p += $sp->jumlah;
             }
             $count[] = $p;
@@ -82,6 +88,6 @@ class IndexController extends Controller
             }
             $income[$month] = $count_income;
         }
-        return view('d.report', compact('title', 'months', 'count','income'));
+        return view('d.report', compact('title', 'months', 'count', 'income'));
     }
 }
