@@ -1,63 +1,46 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Pengenalan Konsep Aplikasi
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Project Website Kecantikan berkonsep website Eccomerce yang dimiliki oleh satu perusahaan yang fokus pada penjualan produk kecantikan. Melalui website ini, perusahaan dapat mempromosikan dan menjual berbagai produk kecantikan kepada pelanggan mereka. Website ini menawarkan informasi terperinci tentang produk, foto-foto berkualitas tinggi. Selain itu, website ini menyediakan fitur pemesanan online yang aman dan nyaman bagi pelanggan. Dengan adanya "website kecantikan" ini, perusahaan dapat memperluas jangkauan mereka secara online dan memberikan pengalaman belanja yang lebih baik kepada pelanggan.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Authentikasi 
+Aplikasi ini menyediakan 2 role berikut :
+### Admin
+Admin memiliki tugas yang sangat kompleks, seperti membuat, mengedit dan menghapus data Produk,Kategori Produk,User,Metode Pembayaran, Metode Delivery, bahkan Transaksi sekaligus.
+- Username : admin
+- Password : admin (same as username)
 
-## Learning Laravel
+### Konsumen
+Siswa berperan sebagai konsumen, siswa dapat melihat history pembayaran dan profile nya sendiri.
+- Username : customer
+- Password : customer  (same as username)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Setting UP
+Menyiapkan dan mensetting project website kecantikan (laravel 9) require (Composer v2.2.4 ,Git, MYSQL PHP > v5 (v8.1.1))
+- Buka CMD atau Aplikasi Command lainnya
+- Masuk ke Directory apa saja untuk menyiapkan folder project. Contoh (cd C:\xampp\htdocs)
+- Download / Clone Project ini dengan cara git clone https://github.com/Cakraawala/website-kecantikan.git atau dengan mendownload langsung file zip dan pindahkan ke directory yang telah disiapkan.
+- Setelah project berhasil di download ekstrak jika file berupa zip, lalu ketikan Composer install di CMD dan tunggu hingga selesai diunduh.
+- Buat database MYSQL dan Buka project website-kecantikan, Cari file dengan nama .envexample kemudian edit nama file tersebut menjadi .env dan buka file tersebut.
+- Setelah file dibuka, Ubah Database_name dan lainnya sesuai dengan database yang baru dibuat.
+- Buka CMD kembali Ketik php artisan key:generate dan php artisan migrate --seed / php artisan migrate:fresh --seed. Setelah data berhasil di dapatkan lalu jalankan Project dengan PHP ARTISAN SERVE.
+- Project Berhasil DiClone.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Asset Foto
+![1dashboard](https://user-images.githubusercontent.com/97875134/228568133-f2ea91b3-bdc6-41dc-9447-6bdc982cf3da.PNG)
+![2datasiswa](https://user-images.githubusercontent.com/97875134/228568157-970bb24c-0bf3-4fb7-884e-099a90d11d6f.PNG)
+![6datakelas](https://user-images.githubusercontent.com/97875134/228568179-8854a44c-24f1-4880-8e4b-761b592b85b3.PNG)
+![10dataspp](https://user-images.githubusercontent.com/97875134/228568202-4ee88e4a-6767-4edf-a195-194d2f6769fb.PNG)
+![16historypembayaran](https://user-images.githubusercontent.com/97875134/228568208-2cb06a8b-609c-48f4-b49d-c67cfa9e0de5.PNG)
+![18detailpembayaran](https://user-images.githubusercontent.com/97875134/228568229-d624465c-8cfe-4100-bf5b-5bc453bee2e9.PNG)
+![19invoicepembayaran](https://user-images.githubusercontent.com/97875134/228568249-c0cdc166-5e27-48f7-a33a-9b551501dc07.PNG)
+![20laporanpembayaran](https://user-images.githubusercontent.com/97875134/228568258-1a75fbdb-9be7-453b-830a-57b1feb0f3e8.PNG)
+![21dashboardsiswa](https://user-images.githubusercontent.com/97875134/228568271-309f7fd3-f43c-4180-8311-2073503f8b8f.PNG)
+![22historypembayaranuser](https://user-images.githubusercontent.com/97875134/228568293-b0e2504e-d1e5-457c-b22d-575a3f61eabe.PNG)
 
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
 ## License
 
