@@ -30,7 +30,7 @@ Menyiapkan dan mensetting project website kecantikan (laravel 9) require (Compos
 - Project Berhasil DiClone.
 
 ## Asset Foto
-[![indexhome](https://user-images.githubusercontent.com/97875134/251057796-7ad740bb-8929-4a0b-a640-e4cfc3e69394.PNG)
+![indexhome](https://user-images.githubusercontent.com/97875134/251057796-7ad740bb-8929-4a0b-a640-e4cfc3e69394.PNG)
 ![2indexproduk](https://user-images.githubusercontent.com/97875134/251057841-fd3bd266-57e7-4fd7-a7ac-a71fbb744868.PNG)
 ![3indexkategory](https://user-images.githubusercontent.com/97875134/251057909-6f68aa85-d360-43aa-b135-4f81298a061b.PNG)
 ![4produk](https://user-images.githubusercontent.com/97875134/251058085-62c1c16c-3cf7-4aa9-80c8-058011e59855.PNG)
