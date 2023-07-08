@@ -30,16 +30,16 @@ Menyiapkan dan mensetting project website kecantikan (laravel 9) require (Compos
 - Project Berhasil DiClone.
 
 ## Asset Foto
-![1dashboard](https://user-images.githubusercontent.com/97875134/228568133-f2ea91b3-bdc6-41dc-9447-6bdc982cf3da.PNG)
-![2datasiswa](https://user-images.githubusercontent.com/97875134/228568157-970bb24c-0bf3-4fb7-884e-099a90d11d6f.PNG)
-![6datakelas](https://user-images.githubusercontent.com/97875134/228568179-8854a44c-24f1-4880-8e4b-761b592b85b3.PNG)
-![10dataspp](https://user-images.githubusercontent.com/97875134/228568202-4ee88e4a-6767-4edf-a195-194d2f6769fb.PNG)
-![16historypembayaran](https://user-images.githubusercontent.com/97875134/228568208-2cb06a8b-609c-48f4-b49d-c67cfa9e0de5.PNG)
-![18detailpembayaran](https://user-images.githubusercontent.com/97875134/228568229-d624465c-8cfe-4100-bf5b-5bc453bee2e9.PNG)
-![19invoicepembayaran](https://user-images.githubusercontent.com/97875134/228568249-c0cdc166-5e27-48f7-a33a-9b551501dc07.PNG)
-![20laporanpembayaran](https://user-images.githubusercontent.com/97875134/228568258-1a75fbdb-9be7-453b-830a-57b1feb0f3e8.PNG)
-![21dashboardsiswa](https://user-images.githubusercontent.com/97875134/228568271-309f7fd3-f43c-4180-8311-2073503f8b8f.PNG)
-![22historypembayaranuser](https://user-images.githubusercontent.com/97875134/228568293-b0e2504e-d1e5-457c-b22d-575a3f61eabe.PNG)
+![indexhome](https://user-images.githubusercontent.com/97875134/251057796-7ad740bb-8929-4a0b-a640-e4cfc3e69394.PNG)
+![2indexproduk](https://user-images.githubusercontent.com/97875134/251057841-fd3bd266-57e7-4fd7-a7ac-a71fbb744868.PNG)
+![3indexkategory](https://user-images.githubusercontent.com/97875134/251057909-6f68aa85-d360-43aa-b135-4f81298a061b.PNG)
+![4produk](https://user-images.githubusercontent.com/97875134/251058085-62c1c16c-3cf7-4aa9-80c8-058011e59855.PNG)
+![5dashboard](https://user-images.githubusercontent.com/97875134/251058198-d130f153-e0cb-48f3-9d5d-1a6461424ea5.PNG)
+![6cart](https://user-images.githubusercontent.com/97875134/251058211-688063c7-7ed5-467b-afe4-98586a7f061f.PNG)
+![7checkout](https://user-images.githubusercontent.com/97875134/251058221-eb3c64ff-e4b1-48ba-8526-f104cd89c8cb.PNG)
+![8editprofile](https://user-images.githubusercontent.com/97875134/251058231-0aa109f6-101b-4740-b165-7a5a50ea36dc.PNG)
+![9historycheckout](https://user-images.githubusercontent.com/97875134/251058236-131bf405-1c61-40ff-ad4c-9361e9404aaa.PNG)
+![10detailhistory](https://user-images.githubusercontent.com/97875134/251058247-8dbcf5fe-bf66-4f35-b4c0-df7dbe213712.PNG)
 
 
 ## License
