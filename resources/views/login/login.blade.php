@@ -33,9 +33,9 @@
         </path>
     </svg> --}}
     <div class="container">
-        {{-- <div class="img">
+        <div class="img">
 			<img src="/loginn/img/bg.svg">
-		</div> --}}
+		</div> 
         <div class="login-content">
             <form action="/login" method="post">
                 @csrf
